@@ -7,46 +7,43 @@
     <meta name="description" content="Pioneer in AI automation. Transform your business with next-generation intelligent systems.">
     
     <!-- Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&family=Orbitron:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&family=Orbitron:wght@400;500;600;700;800;900&family=Rajdhani:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     
     <!-- AOS Animations -->
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    
+    <!-- GSAP for advanced animations -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
     
     <!-- Tailwind -->
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     
     <style>
         :root {
-            --primary: #6366f1;
-            --secondary: #8b5cf6;
-            --accent: #06b6d4;
             --neon-blue: #00f5ff;
             --neon-purple: #bf00ff;
+            --neon-pink: #ff00ff;
+            --electric-blue: #0080ff;
             --dark: #0a0a0f;
-            --darker: #050507;
+            --darker: #030305;
         }
         
         * { margin: 0; padding: 0; box-sizing: border-box; }
         
         body {
-            font-family: 'Inter', sans-serif;
+            font-family: 'Rajdhani', sans-serif;
             background: var(--darker);
             color: #fff;
             overflow-x: hidden;
         }
         
-        h1, h2, h3, h4, h5, h6 { font-family: 'Space Grotesk', sans-serif; }
+        h1, h2, h3 { font-family: 'Orbitron', sans-serif; }
         
-        /* ==================== */
-        /* IRON MAN STYLE INTRO */
-        /* ==================== */
-        
+        /* ====== INTRO ANIMATION ====== */
         #intro-overlay {
             position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
+            inset: 0;
             background: #000;
             z-index: 9999;
             display: flex;
@@ -57,252 +54,100 @@
         
         #intro-overlay.fade-out {
             animation: introFadeOut 1s ease-out forwards;
-            animation-delay: 0.5s;
         }
         
         @keyframes introFadeOut {
-            0% { opacity: 1; }
-            100% { opacity: 0; visibility: hidden; pointer-events: none; }
+            to { opacity: 0; visibility: hidden; pointer-events: none; }
         }
         
-        /* Grid lines background */
         .intro-grid {
             position: absolute;
             inset: 0;
             background-image: 
-                linear-gradient(rgba(0, 245, 255, 0.03) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(0, 245, 255, 0.03) 1px, transparent 1px);
-            background-size: 40px 40px;
+                linear-gradient(rgba(0, 245, 255, 0.05) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(0, 245, 255, 0.05) 1px, transparent 1px);
+            background-size: 30px 30px;
             animation: gridPulse 2s ease-in-out infinite;
         }
         
-        @keyframes gridPulse {
-            0%, 100% { opacity: 0.3; }
-            50% { opacity: 0.6; }
-        }
+        @keyframes gridPulse { 0%, 100% { opacity: 0.3; } 50% { opacity: 0.8; } }
         
-        /* Scanning line */
         .scan-line {
             position: absolute;
             width: 100%;
-            height: 2px;
-            background: linear-gradient(90deg, transparent, var(--neon-blue), transparent);
-            animation: scanMove 2s ease-in-out infinite;
-            box-shadow: 0 0 20px var(--neon-blue), 0 0 40px var(--neon-blue);
+            height: 3px;
+            background: linear-gradient(90deg, transparent, var(--neon-blue), var(--neon-purple), transparent);
+            box-shadow: 0 0 30px var(--neon-blue), 0 0 60px var(--neon-purple);
+            animation: scanMove 1.5s ease-in-out infinite;
         }
         
-        @keyframes scanMove {
-            0% { top: 0; opacity: 0; }
-            10% { opacity: 1; }
-            90% { opacity: 1; }
-            100% { top: 100%; opacity: 0; }
-        }
+        @keyframes scanMove { 0% { top: -10%; } 100% { top: 110%; } }
         
-        /* Central assembly container */
         .assembly-container {
             position: relative;
             width: 400px;
             height: 400px;
         }
         
-        /* Flying pieces */
         .piece {
             position: absolute;
             background: linear-gradient(135deg, var(--neon-blue), var(--neon-purple));
-            border-radius: 4px;
+            border-radius: 2px;
             opacity: 0;
-            box-shadow: 0 0 20px var(--neon-blue);
+            box-shadow: 0 0 20px var(--neon-blue), 0 0 40px var(--neon-purple);
         }
         
-        /* Different piece animations from all directions */
-        .piece-1 { width: 60px; height: 8px; top: 50%; left: 50%; animation: flyIn1 0.8s ease-out 0.5s forwards; }
-        .piece-2 { width: 8px; height: 60px; top: 50%; left: 50%; animation: flyIn2 0.8s ease-out 0.6s forwards; }
-        .piece-3 { width: 40px; height: 8px; top: 50%; left: 50%; animation: flyIn3 0.8s ease-out 0.7s forwards; }
-        .piece-4 { width: 8px; height: 40px; top: 50%; left: 50%; animation: flyIn4 0.8s ease-out 0.8s forwards; }
-        .piece-5 { width: 30px; height: 6px; top: 50%; left: 50%; animation: flyIn5 0.8s ease-out 0.9s forwards; }
-        .piece-6 { width: 6px; height: 30px; top: 50%; left: 50%; animation: flyIn6 0.8s ease-out 1s forwards; }
-        .piece-7 { width: 50px; height: 6px; top: 50%; left: 50%; animation: flyIn7 0.8s ease-out 0.55s forwards; }
-        .piece-8 { width: 6px; height: 50px; top: 50%; left: 50%; animation: flyIn8 0.8s ease-out 0.65s forwards; }
+        .piece-1 { width: 80px; height: 6px; top: 50%; left: 50%; animation: flyIn1 0.6s cubic-bezier(0.16, 1, 0.3, 1) 0.3s forwards; }
+        .piece-2 { width: 6px; height: 80px; top: 50%; left: 50%; animation: flyIn2 0.6s cubic-bezier(0.16, 1, 0.3, 1) 0.4s forwards; }
+        .piece-3 { width: 60px; height: 6px; top: 50%; left: 50%; animation: flyIn3 0.6s cubic-bezier(0.16, 1, 0.3, 1) 0.5s forwards; }
+        .piece-4 { width: 6px; height: 60px; top: 50%; left: 50%; animation: flyIn4 0.6s cubic-bezier(0.16, 1, 0.3, 1) 0.6s forwards; }
+        .piece-5 { width: 40px; height: 4px; top: 50%; left: 50%; animation: flyIn5 0.6s cubic-bezier(0.16, 1, 0.3, 1) 0.35s forwards; }
+        .piece-6 { width: 4px; height: 40px; top: 50%; left: 50%; animation: flyIn6 0.6s cubic-bezier(0.16, 1, 0.3, 1) 0.45s forwards; }
+        .piece-7 { width: 30px; height: 30px; border-radius: 50%; top: 50%; left: 50%; animation: flyIn7 0.6s cubic-bezier(0.16, 1, 0.3, 1) 0.7s forwards; }
+        .piece-8 { width: 20px; height: 20px; border-radius: 50%; top: 50%; left: 50%; animation: flyIn8 0.6s cubic-bezier(0.16, 1, 0.3, 1) 0.75s forwards; }
         
-        /* Corner pieces */
-        .piece-9 { width: 20px; height: 20px; top: 50%; left: 50%; border-radius: 50%; animation: flyIn9 0.8s ease-out 1.1s forwards; }
-        .piece-10 { width: 20px; height: 20px; top: 50%; left: 50%; border-radius: 50%; animation: flyIn10 0.8s ease-out 1.2s forwards; }
-        .piece-11 { width: 20px; height: 20px; top: 50%; left: 50%; border-radius: 50%; animation: flyIn11 0.8s ease-out 1.3s forwards; }
-        .piece-12 { width: 20px; height: 20px; top: 50%; left: 50%; border-radius: 50%; animation: flyIn12 0.8s ease-out 1.4s forwards; }
+        @keyframes flyIn1 { from { transform: translate(-600px, -200px) rotate(-180deg) scale(0); opacity: 0; } to { transform: translate(-40px, -3px) rotate(0) scale(1); opacity: 1; } }
+        @keyframes flyIn2 { from { transform: translate(600px, -300px) rotate(180deg) scale(0); opacity: 0; } to { transform: translate(-3px, -40px) rotate(0) scale(1); opacity: 1; } }
+        @keyframes flyIn3 { from { transform: translate(-500px, 400px) rotate(-90deg) scale(0); opacity: 0; } to { transform: translate(20px, 15px) rotate(45deg) scale(1); opacity: 1; } }
+        @keyframes flyIn4 { from { transform: translate(500px, 400px) rotate(90deg) scale(0); opacity: 0; } to { transform: translate(-60px, 20px) rotate(-45deg) scale(1); opacity: 1; } }
+        @keyframes flyIn5 { from { transform: translate(0, -500px) rotate(270deg) scale(0); opacity: 0; } to { transform: translate(-70px, -50px) rotate(30deg) scale(1); opacity: 1; } }
+        @keyframes flyIn6 { from { transform: translate(0, 500px) rotate(-270deg) scale(0); opacity: 0; } to { transform: translate(50px, 40px) rotate(-30deg) scale(1); opacity: 1; } }
+        @keyframes flyIn7 { from { transform: translate(-400px, -400px) scale(0); opacity: 0; } to { transform: translate(-80px, -80px) scale(1); opacity: 1; } }
+        @keyframes flyIn8 { from { transform: translate(400px, 400px) scale(0); opacity: 0; } to { transform: translate(60px, 60px) scale(1); opacity: 1; } }
         
-        /* Hex pieces */
-        .piece-hex {
-            width: 40px;
-            height: 40px;
-            background: transparent;
-            border: 2px solid var(--neon-blue);
-            clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
-        }
-        
-        .piece-13 { animation: flyIn13 0.8s ease-out 0.75s forwards; }
-        .piece-14 { animation: flyIn14 0.8s ease-out 0.85s forwards; }
-        .piece-15 { animation: flyIn15 0.8s ease-out 0.95s forwards; }
-        .piece-16 { animation: flyIn16 0.8s ease-out 1.05s forwards; }
-        
-        @keyframes flyIn1 {
-            0% { transform: translate(-500px, -200px) rotate(-180deg) scale(0); opacity: 0; }
-            100% { transform: translate(-50px, -4px) rotate(0deg) scale(1); opacity: 1; }
-        }
-        @keyframes flyIn2 {
-            0% { transform: translate(500px, -300px) rotate(180deg) scale(0); opacity: 0; }
-            100% { transform: translate(-4px, -50px) rotate(0deg) scale(1); opacity: 1; }
-        }
-        @keyframes flyIn3 {
-            0% { transform: translate(-400px, 300px) rotate(-90deg) scale(0); opacity: 0; }
-            100% { transform: translate(10px, -4px) rotate(0deg) scale(1); opacity: 1; }
-        }
-        @keyframes flyIn4 {
-            0% { transform: translate(300px, 400px) rotate(90deg) scale(0); opacity: 0; }
-            100% { transform: translate(-4px, 10px) rotate(0deg) scale(1); opacity: 1; }
-        }
-        @keyframes flyIn5 {
-            0% { transform: translate(-600px, 0) rotate(-270deg) scale(0); opacity: 0; }
-            100% { transform: translate(-80px, 20px) rotate(45deg) scale(1); opacity: 1; }
-        }
-        @keyframes flyIn6 {
-            0% { transform: translate(600px, 0) rotate(270deg) scale(0); opacity: 0; }
-            100% { transform: translate(60px, -70px) rotate(-45deg) scale(1); opacity: 1; }
-        }
-        @keyframes flyIn7 {
-            0% { transform: translate(0, -500px) rotate(180deg) scale(0); opacity: 0; }
-            100% { transform: translate(-70px, 50px) rotate(30deg) scale(1); opacity: 1; }
-        }
-        @keyframes flyIn8 {
-            0% { transform: translate(0, 500px) rotate(-180deg) scale(0); opacity: 0; }
-            100% { transform: translate(50px, 40px) rotate(-30deg) scale(1); opacity: 1; }
-        }
-        @keyframes flyIn9 {
-            0% { transform: translate(-400px, -400px) scale(0); opacity: 0; }
-            100% { transform: translate(-80px, -80px) scale(1); opacity: 1; }
-        }
-        @keyframes flyIn10 {
-            0% { transform: translate(400px, -400px) scale(0); opacity: 0; }
-            100% { transform: translate(60px, -80px) scale(1); opacity: 1; }
-        }
-        @keyframes flyIn11 {
-            0% { transform: translate(-400px, 400px) scale(0); opacity: 0; }
-            100% { transform: translate(-80px, 60px) scale(1); opacity: 1; }
-        }
-        @keyframes flyIn12 {
-            0% { transform: translate(400px, 400px) scale(0); opacity: 0; }
-            100% { transform: translate(60px, 60px) scale(1); opacity: 1; }
-        }
-        @keyframes flyIn13 {
-            0% { transform: translate(-300px, -150px) rotate(-90deg) scale(0); opacity: 0; }
-            100% { transform: translate(-100px, -30px) rotate(0deg) scale(1); opacity: 1; }
-        }
-        @keyframes flyIn14 {
-            0% { transform: translate(300px, -150px) rotate(90deg) scale(0); opacity: 0; }
-            100% { transform: translate(80px, -30px) rotate(0deg) scale(1); opacity: 1; }
-        }
-        @keyframes flyIn15 {
-            0% { transform: translate(-300px, 150px) rotate(90deg) scale(0); opacity: 0; }
-            100% { transform: translate(-100px, 30px) rotate(0deg) scale(1); opacity: 1; }
-        }
-        @keyframes flyIn16 {
-            0% { transform: translate(300px, 150px) rotate(-90deg) scale(0); opacity: 0; }
-            100% { transform: translate(80px, 30px) rotate(0deg) scale(1); opacity: 1; }
-        }
-        
-        /* Central logo assembly */
         .logo-assembly {
             position: absolute;
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
             font-family: 'Orbitron', sans-serif;
-            font-size: 72px;
+            font-size: 80px;
             font-weight: 900;
-            opacity: 0;
-            animation: logoReveal 1s ease-out 1.8s forwards;
+            letter-spacing: 15px;
         }
         
         .logo-assembly span {
             display: inline-block;
             opacity: 0;
-            transform: translateY(50px);
-        }
-        
-        .logo-assembly span:nth-child(1) { animation: letterReveal 0.5s ease-out 1.8s forwards; }
-        .logo-assembly span:nth-child(2) { animation: letterReveal 0.5s ease-out 1.9s forwards; }
-        .logo-assembly span:nth-child(3) { animation: letterReveal 0.5s ease-out 2.0s forwards; }
-        .logo-assembly span:nth-child(4) { animation: letterReveal 0.5s ease-out 2.1s forwards; }
-        .logo-assembly span:nth-child(5) { animation: letterReveal 0.5s ease-out 2.2s forwards; }
-        .logo-assembly span:nth-child(6) { animation: letterReveal 0.5s ease-out 2.3s forwards; }
-        
-        @keyframes letterReveal {
-            0% { opacity: 0; transform: translateY(50px) scale(0.5); filter: blur(10px); }
-            100% { opacity: 1; transform: translateY(0) scale(1); filter: blur(0); }
-        }
-        
-        @keyframes logoReveal {
-            0% { opacity: 0; }
-            100% { opacity: 1; }
-        }
-        
-        .logo-glow {
-            background: linear-gradient(135deg, var(--neon-blue), var(--neon-purple), var(--neon-blue));
-            background-size: 200% 200%;
+            background: linear-gradient(135deg, var(--neon-blue), #fff, var(--neon-purple));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            background-clip: text;
-            animation: gradientFlow 2s ease infinite;
             filter: drop-shadow(0 0 30px var(--neon-blue)) drop-shadow(0 0 60px var(--neon-purple));
         }
         
-        @keyframes gradientFlow {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
+        .logo-assembly span:nth-child(1) { animation: letterReveal 0.4s cubic-bezier(0.16, 1, 0.3, 1) 1s forwards; }
+        .logo-assembly span:nth-child(2) { animation: letterReveal 0.4s cubic-bezier(0.16, 1, 0.3, 1) 1.1s forwards; }
+        .logo-assembly span:nth-child(3) { animation: letterReveal 0.4s cubic-bezier(0.16, 1, 0.3, 1) 1.2s forwards; }
+        .logo-assembly span:nth-child(4) { animation: letterReveal 0.4s cubic-bezier(0.16, 1, 0.3, 1) 1.3s forwards; }
+        .logo-assembly span:nth-child(5) { animation: letterReveal 0.4s cubic-bezier(0.16, 1, 0.3, 1) 1.4s forwards; }
+        .logo-assembly span:nth-child(6) { animation: letterReveal 0.4s cubic-bezier(0.16, 1, 0.3, 1) 1.5s forwards; }
+        
+        @keyframes letterReveal {
+            from { opacity: 0; transform: translateY(100px) rotateX(90deg) scale(0); filter: blur(20px); }
+            to { opacity: 1; transform: translateY(0) rotateX(0) scale(1); filter: blur(0); }
         }
         
-        /* Tagline */
-        .tagline {
-            position: absolute;
-            top: 60%;
-            left: 50%;
-            transform: translateX(-50%);
-            font-family: 'Space Grotesk', sans-serif;
-            font-size: 18px;
-            letter-spacing: 8px;
-            text-transform: uppercase;
-            color: var(--neon-blue);
-            opacity: 0;
-            animation: taglineReveal 1s ease-out 2.5s forwards;
-        }
-        
-        @keyframes taglineReveal {
-            0% { opacity: 0; letter-spacing: 20px; }
-            100% { opacity: 1; letter-spacing: 8px; }
-        }
-        
-        /* Energy burst */
-        .energy-burst {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            width: 10px;
-            height: 10px;
-            background: var(--neon-blue);
-            border-radius: 50%;
-            transform: translate(-50%, -50%);
-            opacity: 0;
-            animation: energyBurst 1s ease-out 1.5s forwards;
-        }
-        
-        @keyframes energyBurst {
-            0% { width: 10px; height: 10px; opacity: 1; box-shadow: 0 0 20px var(--neon-blue); }
-            50% { width: 300px; height: 300px; opacity: 0.8; }
-            100% { width: 600px; height: 600px; opacity: 0; }
-        }
-        
-        /* Ring expansions */
-        .ring {
+        .energy-ring {
             position: absolute;
             top: 50%;
             left: 50%;
@@ -312,329 +157,455 @@
             opacity: 0;
         }
         
-        .ring-1 { animation: ringExpand 1.5s ease-out 1.6s forwards; }
-        .ring-2 { animation: ringExpand 1.5s ease-out 1.8s forwards; }
-        .ring-3 { animation: ringExpand 1.5s ease-out 2.0s forwards; }
+        .energy-ring:nth-child(1) { animation: ringExpand 1s ease-out 0.8s forwards; }
+        .energy-ring:nth-child(2) { animation: ringExpand 1s ease-out 1s forwards; }
+        .energy-ring:nth-child(3) { animation: ringExpand 1s ease-out 1.2s forwards; }
         
-        @keyframes ringExpand {
-            0% { width: 50px; height: 50px; opacity: 1; }
-            100% { width: 800px; height: 800px; opacity: 0; }
-        }
+        @keyframes ringExpand { from { width: 50px; height: 50px; opacity: 1; } to { width: 600px; height: 600px; opacity: 0; } }
         
-        /* HUD elements */
-        .hud-element {
+        .tagline {
             position: absolute;
-            border: 1px solid var(--neon-blue);
-            opacity: 0;
-        }
-        
-        .hud-corner-tl {
-            top: 10%;
-            left: 10%;
-            width: 100px;
-            height: 100px;
-            border-right: none;
-            border-bottom: none;
-            animation: hudReveal 0.5s ease-out 0.3s forwards;
-        }
-        
-        .hud-corner-tr {
-            top: 10%;
-            right: 10%;
-            width: 100px;
-            height: 100px;
-            border-left: none;
-            border-bottom: none;
-            animation: hudReveal 0.5s ease-out 0.4s forwards;
-        }
-        
-        .hud-corner-bl {
-            bottom: 10%;
-            left: 10%;
-            width: 100px;
-            height: 100px;
-            border-right: none;
-            border-top: none;
-            animation: hudReveal 0.5s ease-out 0.5s forwards;
-        }
-        
-        .hud-corner-br {
-            bottom: 10%;
-            right: 10%;
-            width: 100px;
-            height: 100px;
-            border-left: none;
-            border-top: none;
-            animation: hudReveal 0.5s ease-out 0.6s forwards;
-        }
-        
-        @keyframes hudReveal {
-            0% { opacity: 0; transform: scale(0.5); }
-            100% { opacity: 0.5; transform: scale(1); }
-        }
-        
-        /* Data streams */
-        .data-stream {
-            position: absolute;
-            font-family: 'Courier New', monospace;
-            font-size: 10px;
+            top: 65%;
+            left: 50%;
+            transform: translateX(-50%);
+            font-family: 'Orbitron', sans-serif;
+            font-size: 14px;
+            letter-spacing: 10px;
             color: var(--neon-blue);
-            opacity: 0.3;
-            white-space: nowrap;
-            animation: dataScroll 10s linear infinite;
+            opacity: 0;
+            animation: taglineReveal 0.8s ease-out 1.8s forwards;
+            text-shadow: 0 0 20px var(--neon-blue);
         }
         
-        .data-stream-1 { top: 20%; left: -200px; }
-        .data-stream-2 { top: 40%; right: -200px; animation-direction: reverse; }
-        .data-stream-3 { top: 60%; left: -200px; animation-delay: -3s; }
-        .data-stream-4 { top: 80%; right: -200px; animation-direction: reverse; animation-delay: -5s; }
+        @keyframes taglineReveal { from { opacity: 0; letter-spacing: 30px; } to { opacity: 1; letter-spacing: 10px; } }
         
-        @keyframes dataScroll {
-            0% { transform: translateX(0); }
-            100% { transform: translateX(calc(100vw + 400px)); }
-        }
-        
-        /* Loading bar */
         .loading-bar {
             position: absolute;
-            bottom: 15%;
+            bottom: 20%;
             left: 50%;
             transform: translateX(-50%);
             width: 300px;
-            height: 4px;
+            height: 3px;
             background: rgba(255,255,255,0.1);
             border-radius: 2px;
             overflow: hidden;
         }
         
         .loading-bar-fill {
-            width: 0;
             height: 100%;
-            background: linear-gradient(90deg, var(--neon-blue), var(--neon-purple));
-            animation: loadingFill 2.5s ease-out forwards;
+            background: linear-gradient(90deg, var(--neon-blue), var(--neon-purple), var(--neon-blue));
+            background-size: 200% 100%;
+            animation: loadingFill 2s ease-out forwards, shimmer 1s linear infinite;
             box-shadow: 0 0 20px var(--neon-blue);
         }
         
-        @keyframes loadingFill {
-            0% { width: 0; }
-            100% { width: 100%; }
-        }
+        @keyframes loadingFill { from { width: 0; } to { width: 100%; } }
+        @keyframes shimmer { from { background-position: 200% 0; } to { background-position: -200% 0; } }
         
-        .loading-text {
-            position: absolute;
-            bottom: 12%;
-            left: 50%;
-            transform: translateX(-50%);
-            font-family: 'Orbitron', sans-serif;
-            font-size: 12px;
-            color: var(--neon-blue);
-            letter-spacing: 4px;
-        }
-        
-        /* Skip button */
         .skip-btn {
             position: absolute;
             bottom: 5%;
             right: 5%;
-            padding: 10px 20px;
+            padding: 10px 25px;
             background: transparent;
-            border: 1px solid rgba(255,255,255,0.3);
-            color: rgba(255,255,255,0.5);
-            font-size: 12px;
+            border: 1px solid var(--neon-blue);
+            color: var(--neon-blue);
+            font-family: 'Orbitron', sans-serif;
+            font-size: 11px;
+            letter-spacing: 3px;
             cursor: pointer;
             transition: all 0.3s ease;
-            z-index: 10000;
         }
         
-        .skip-btn:hover {
-            border-color: var(--neon-blue);
-            color: var(--neon-blue);
+        .skip-btn:hover { background: var(--neon-blue); color: #000; box-shadow: 0 0 30px var(--neon-blue); }
+        
+        /* ====== GLOBAL FUTURISTIC STYLES ====== */
+        
+        /* Persistent HUD elements */
+        .hud-corner {
+            position: fixed;
+            width: 80px;
+            height: 80px;
+            border: 1px solid rgba(0, 245, 255, 0.3);
+            z-index: 100;
+            pointer-events: none;
         }
         
-        /* Main content hidden initially */
-        #main-content {
-            opacity: 0;
-            transition: opacity 1s ease;
-        }
-        
-        #main-content.visible {
-            opacity: 1;
-        }
-        
-        /* ==================== */
-        /* REST OF STYLES */
-        /* ==================== */
-        
-        .hero-gradient {
-            background: linear-gradient(-45deg, #0a0a0f, #1a1a2e, #16213e, #0f0f1a);
-            background-size: 400% 400%;
-            animation: gradientShift 15s ease infinite;
-        }
-        
-        @keyframes gradientShift {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
-        }
-        
-        .orb {
+        .hud-corner::before, .hud-corner::after {
+            content: '';
             position: absolute;
-            border-radius: 50%;
-            filter: blur(80px);
-            opacity: 0.5;
-            animation: orbFloat 20s ease-in-out infinite;
+            background: var(--neon-blue);
         }
         
-        .orb-1 { width: 600px; height: 600px; background: linear-gradient(135deg, #6366f1, #8b5cf6); top: -200px; right: -200px; }
-        .orb-2 { width: 400px; height: 400px; background: linear-gradient(135deg, #06b6d4, #3b82f6); bottom: -100px; left: -100px; animation-delay: -5s; }
-        .orb-3 { width: 300px; height: 300px; background: linear-gradient(135deg, #ec4899, #8b5cf6); top: 50%; left: 50%; animation-delay: -10s; }
+        .hud-tl { top: 20px; left: 20px; border-right: none; border-bottom: none; }
+        .hud-tl::before { top: 0; left: 0; width: 20px; height: 2px; }
+        .hud-tl::after { top: 0; left: 0; width: 2px; height: 20px; }
         
-        @keyframes orbFloat {
-            0%, 100% { transform: translate(0, 0) scale(1); }
-            25% { transform: translate(50px, -50px) scale(1.1); }
-            50% { transform: translate(-30px, 30px) scale(0.9); }
-            75% { transform: translate(-50px, -30px) scale(1.05); }
-        }
+        .hud-tr { top: 20px; right: 20px; border-left: none; border-bottom: none; }
+        .hud-tr::before { top: 0; right: 0; width: 20px; height: 2px; }
+        .hud-tr::after { top: 0; right: 0; width: 2px; height: 20px; }
         
-        .grid-pattern {
-            background-image: linear-gradient(rgba(99, 102, 241, 0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(99, 102, 241, 0.03) 1px, transparent 1px);
+        .hud-bl { bottom: 20px; left: 20px; border-right: none; border-top: none; }
+        .hud-bl::before { bottom: 0; left: 0; width: 20px; height: 2px; }
+        .hud-bl::after { bottom: 0; left: 0; width: 2px; height: 20px; }
+        
+        .hud-br { bottom: 20px; right: 20px; border-left: none; border-top: none; }
+        .hud-br::before { bottom: 0; right: 0; width: 20px; height: 2px; }
+        .hud-br::after { bottom: 0; right: 0; width: 2px; height: 20px; }
+        
+        /* Global grid background */
+        .global-grid {
+            position: fixed;
+            inset: 0;
+            background-image: 
+                linear-gradient(rgba(0, 245, 255, 0.02) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(0, 245, 255, 0.02) 1px, transparent 1px);
             background-size: 50px 50px;
+            pointer-events: none;
+            z-index: 1;
         }
         
-        .glass { background: rgba(255, 255, 255, 0.03); backdrop-filter: blur(20px); border: 1px solid rgba(255, 255, 255, 0.08); }
-        .glass-strong { background: rgba(255, 255, 255, 0.08); backdrop-filter: blur(40px); border: 1px solid rgba(255, 255, 255, 0.15); }
+        /* Floating particles */
+        .particle {
+            position: fixed;
+            width: 4px;
+            height: 4px;
+            background: var(--neon-blue);
+            border-radius: 50%;
+            pointer-events: none;
+            opacity: 0.5;
+            z-index: 2;
+        }
         
-        .btn-primary {
-            background: linear-gradient(135deg, #6366f1, #8b5cf6);
-            padding: 16px 32px;
-            border-radius: 12px;
-            font-weight: 600;
-            transition: all 0.3s ease;
+        /* Section styles */
+        section {
             position: relative;
-            overflow: hidden;
         }
         
-        .btn-primary::before {
+        /* Holographic card effect */
+        .holo-card {
+            position: relative;
+            background: linear-gradient(135deg, rgba(0, 245, 255, 0.05), rgba(191, 0, 255, 0.05));
+            border: 1px solid rgba(0, 245, 255, 0.2);
+            overflow: hidden;
+            transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+        }
+        
+        .holo-card::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(45deg, transparent, rgba(0, 245, 255, 0.1), transparent);
+            transform: rotate(45deg);
+            animation: holoShine 3s linear infinite;
+        }
+        
+        @keyframes holoShine { from { transform: translateX(-100%) rotate(45deg); } to { transform: translateX(100%) rotate(45deg); } }
+        
+        .holo-card:hover {
+            border-color: var(--neon-blue);
+            box-shadow: 0 0 50px rgba(0, 245, 255, 0.3), inset 0 0 30px rgba(0, 245, 255, 0.1);
+            transform: translateY(-10px) scale(1.02);
+        }
+        
+        /* Glitch effect */
+        .glitch {
+            position: relative;
+        }
+        
+        .glitch::before, .glitch::after {
+            content: attr(data-text);
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+        
+        .glitch::before {
+            color: var(--neon-blue);
+            animation: glitch1 2s infinite;
+            clip-path: polygon(0 0, 100% 0, 100% 35%, 0 35%);
+        }
+        
+        .glitch::after {
+            color: var(--neon-purple);
+            animation: glitch2 2s infinite;
+            clip-path: polygon(0 65%, 100% 65%, 100% 100%, 0 100%);
+        }
+        
+        @keyframes glitch1 {
+            0%, 100% { transform: translate(0); }
+            20% { transform: translate(-3px, 3px); }
+            40% { transform: translate(3px, -3px); }
+            60% { transform: translate(-3px, -3px); }
+            80% { transform: translate(3px, 3px); }
+        }
+        
+        @keyframes glitch2 {
+            0%, 100% { transform: translate(0); }
+            20% { transform: translate(3px, -3px); }
+            40% { transform: translate(-3px, 3px); }
+            60% { transform: translate(3px, 3px); }
+            80% { transform: translate(-3px, -3px); }
+        }
+        
+        /* Neon text */
+        .neon-text {
+            color: #fff;
+            text-shadow: 
+                0 0 5px var(--neon-blue),
+                0 0 10px var(--neon-blue),
+                0 0 20px var(--neon-blue),
+                0 0 40px var(--neon-purple),
+                0 0 80px var(--neon-purple);
+        }
+        
+        .text-gradient {
+            background: linear-gradient(135deg, var(--neon-blue), #fff, var(--neon-purple));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        /* Cyber button */
+        .cyber-btn {
+            position: relative;
+            padding: 18px 40px;
+            background: transparent;
+            border: 2px solid var(--neon-blue);
+            color: var(--neon-blue);
+            font-family: 'Orbitron', sans-serif;
+            font-size: 14px;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            cursor: pointer;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            clip-path: polygon(10px 0, 100% 0, 100% calc(100% - 10px), calc(100% - 10px) 100%, 0 100%, 0 10px);
+        }
+        
+        .cyber-btn::before {
             content: '';
             position: absolute;
             top: 0;
             left: -100%;
             width: 100%;
             height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            background: linear-gradient(90deg, transparent, var(--neon-blue), transparent);
             transition: left 0.5s ease;
         }
         
-        .btn-primary:hover::before { left: 100%; }
-        .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 20px 40px rgba(99, 102, 241, 0.4); }
+        .cyber-btn:hover::before { left: 100%; }
         
-        .btn-secondary {
-            padding: 16px 32px;
-            border-radius: 12px;
-            font-weight: 600;
-            border: 1px solid rgba(255,255,255,0.2);
+        .cyber-btn:hover {
+            background: var(--neon-blue);
+            color: #000;
+            box-shadow: 0 0 30px var(--neon-blue), 0 0 60px rgba(0, 245, 255, 0.5);
+        }
+        
+        .cyber-btn-filled {
+            background: linear-gradient(135deg, var(--neon-blue), var(--neon-purple));
+            border: none;
+            color: #000;
+            font-weight: 700;
+        }
+        
+        .cyber-btn-filled:hover {
+            box-shadow: 0 0 40px var(--neon-blue), 0 0 80px var(--neon-purple);
+            transform: translateY(-3px);
+        }
+        
+        /* Scanning line effect for sections */
+        .scan-section {
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .scan-section::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, var(--neon-blue), transparent);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        
+        .scan-section.in-view::after {
+            animation: sectionScan 1.5s ease-out;
+        }
+        
+        @keyframes sectionScan {
+            0% { top: 0; opacity: 1; }
+            100% { top: 100%; opacity: 0; }
+        }
+        
+        /* Data visualization */
+        .data-line {
+            height: 2px;
+            background: linear-gradient(90deg, var(--neon-blue), transparent);
+            transform-origin: left;
+            transform: scaleX(0);
+            transition: transform 1s cubic-bezier(0.23, 1, 0.32, 1);
+        }
+        
+        .data-line.animate { transform: scaleX(1); }
+        
+        /* Hexagon pattern */
+        .hex-pattern {
+            position: absolute;
+            inset: 0;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='28' height='49' viewBox='0 0 28 49'%3E%3Cg fill-rule='evenodd'%3E%3Cg fill='%2300f5ff' fill-opacity='0.03'%3E%3Cpath d='M13.99 9.25l13 7.5v15l-13 7.5L1 31.75v-15l12.99-7.5zM3 17.9v12.7l10.99 6.34 11-6.35V17.9l-11-6.34L3 17.9z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+            opacity: 0.5;
+            pointer-events: none;
+        }
+        
+        /* Navigation */
+        .nav-cyber {
+            background: rgba(3, 3, 5, 0.8);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(0, 245, 255, 0.1);
+        }
+        
+        .nav-link {
+            position: relative;
+            color: rgba(255, 255, 255, 0.7);
+            font-family: 'Rajdhani', sans-serif;
+            font-size: 14px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
             transition: all 0.3s ease;
         }
         
-        .btn-secondary:hover { background: rgba(255,255,255,0.1); border-color: rgba(255,255,255,0.4); transform: translateY(-2px); }
-        
-        .text-gradient {
-            background: linear-gradient(135deg, #6366f1, #8b5cf6, #06b6d4);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-        
-        .glow-text { text-shadow: 0 0 40px rgba(99, 102, 241, 0.5); }
-        
-        .stat-number {
-            font-size: 4rem;
-            font-weight: 700;
-            background: linear-gradient(135deg, #fff, #a5b4fc);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-        
-        .nav-blur { background: rgba(5, 5, 7, 0.8); backdrop-filter: blur(20px); }
-        
-        html { scroll-behavior: smooth; }
-        
-        ::-webkit-scrollbar { width: 8px; }
-        ::-webkit-scrollbar-track { background: var(--darker); }
-        ::-webkit-scrollbar-thumb { background: linear-gradient(135deg, #6366f1, #8b5cf6); border-radius: 4px; }
-        
-        .product-card {
-            background: linear-gradient(135deg, rgba(99, 102, 241, 0.1), rgba(139, 92, 246, 0.05));
-            border: 1px solid rgba(99, 102, 241, 0.2);
-            transition: all 0.4s ease;
-        }
-        
-        .product-card:hover {
-            border-color: rgba(99, 102, 241, 0.5);
-            transform: translateY(-8px);
-            box-shadow: 0 25px 50px rgba(99, 102, 241, 0.2);
-        }
-        
-        .product-card:hover .product-icon { transform: scale(1.1) rotate(5deg); }
-        .product-icon { transition: transform 0.4s ease; }
-        
-        .card-3d { transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1); transform-style: preserve-3d; }
-        .card-3d:hover { transform: translateY(-10px) rotateX(5deg); box-shadow: 0 30px 60px rgba(0,0,0,0.4); }
-        
-        .line-animate { position: relative; }
-        .line-animate::after {
+        .nav-link::after {
             content: '';
             position: absolute;
-            bottom: -4px;
+            bottom: -5px;
             left: 0;
             width: 0;
             height: 2px;
-            background: linear-gradient(90deg, #6366f1, #06b6d4);
+            background: var(--neon-blue);
+            box-shadow: 0 0 10px var(--neon-blue);
             transition: width 0.3s ease;
         }
-        .line-animate:hover::after { width: 100%; }
         
-        .float { animation: float 6s ease-in-out infinite; }
+        .nav-link:hover { color: var(--neon-blue); }
+        .nav-link:hover::after { width: 100%; }
+        
+        /* Stats */
+        .stat-box {
+            position: relative;
+            padding: 30px;
+            background: rgba(0, 245, 255, 0.03);
+            border: 1px solid rgba(0, 245, 255, 0.1);
+            clip-path: polygon(0 0, calc(100% - 15px) 0, 100% 15px, 100% 100%, 15px 100%, 0 calc(100% - 15px));
+        }
+        
+        .stat-number {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 3.5rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, var(--neon-blue), #fff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: none;
+        }
+        
+        /* Product cards */
+        .product-card {
+            position: relative;
+            background: linear-gradient(135deg, rgba(0, 245, 255, 0.03), rgba(191, 0, 255, 0.03));
+            border: 1px solid rgba(0, 245, 255, 0.15);
+            transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+            overflow: hidden;
+        }
+        
+        .product-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--neon-blue), transparent);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        
+        .product-card:hover::before { opacity: 1; }
+        
+        .product-card:hover {
+            border-color: var(--neon-blue);
+            transform: translateY(-15px) scale(1.02);
+            box-shadow: 
+                0 30px 60px rgba(0, 0, 0, 0.5),
+                0 0 30px rgba(0, 245, 255, 0.2),
+                inset 0 0 30px rgba(0, 245, 255, 0.05);
+        }
+        
+        .product-icon {
+            position: relative;
+            width: 70px;
+            height: 70px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, rgba(0, 245, 255, 0.1), rgba(191, 0, 255, 0.1));
+            border: 1px solid rgba(0, 245, 255, 0.3);
+            clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+            transition: all 0.4s ease;
+        }
+        
+        .product-card:hover .product-icon {
+            background: linear-gradient(135deg, var(--neon-blue), var(--neon-purple));
+            box-shadow: 0 0 30px var(--neon-blue);
+            transform: rotate(360deg) scale(1.1);
+        }
+        
+        /* Scrollbar */
+        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar-track { background: var(--darker); }
+        ::-webkit-scrollbar-thumb { background: linear-gradient(180deg, var(--neon-blue), var(--neon-purple)); border-radius: 3px; }
+        
+        /* Animations */
         @keyframes float {
             0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-20px); }
+            50% { transform: translateY(-15px); }
         }
         
+        .float { animation: float 4s ease-in-out infinite; }
+        
+        @keyframes pulse-glow {
+            0%, 100% { box-shadow: 0 0 20px rgba(0, 245, 255, 0.3); }
+            50% { box-shadow: 0 0 40px rgba(0, 245, 255, 0.6), 0 0 60px rgba(191, 0, 255, 0.3); }
+        }
+        
+        .pulse-glow { animation: pulse-glow 2s ease-in-out infinite; }
+        
+        /* Marquee */
         .marquee { overflow: hidden; }
-        .marquee-content { display: flex; animation: marquee 30s linear infinite; }
-        @keyframes marquee {
-            0% { transform: translateX(0); }
-            100% { transform: translateX(-50%); }
-        }
+        .marquee-content { display: flex; animation: marquee 25s linear infinite; }
+        @keyframes marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
         
-        #particles-js { position: absolute; width: 100%; height: 100%; top: 0; left: 0; z-index: 0; }
+        /* Main content */
+        #main-content { opacity: 0; transition: opacity 0.8s ease; }
+        #main-content.visible { opacity: 1; }
+        
+        html { scroll-behavior: smooth; }
     </style>
 </head>
-<body class="antialiased">
-    
-    <!-- ==================== -->
-    <!-- IRON MAN STYLE INTRO -->
-    <!-- ==================== -->
+<body>
+    <!-- ====== INTRO ANIMATION ====== -->
     <div id="intro-overlay">
-        <!-- Background grid -->
         <div class="intro-grid"></div>
-        
-        <!-- Scanning line -->
         <div class="scan-line"></div>
         
-        <!-- HUD corners -->
-        <div class="hud-element hud-corner-tl"></div>
-        <div class="hud-element hud-corner-tr"></div>
-        <div class="hud-element hud-corner-bl"></div>
-        <div class="hud-element hud-corner-br"></div>
-        
-        <!-- Data streams -->
-        <div class="data-stream data-stream-1">INITIALIZING NEURAL NETWORKS /// LOADING AI MODULES /// ESTABLISHING CONNECTIONS /// SYNCING DATABASES ///</div>
-        <div class="data-stream data-stream-2">/// QUANTUM PROCESSING ACTIVE /// MACHINE LEARNING ENABLED /// DEEP ANALYSIS READY ///</div>
-        <div class="data-stream data-stream-3">CALIBRATING AUTOMATION SYSTEMS /// VOICE AI ONLINE /// CHAT AI ACTIVE /// AGENT AI DEPLOYED ///</div>
-        <div class="data-stream data-stream-4">/// SECURITY PROTOCOLS ENGAGED /// ENCRYPTION VERIFIED /// SYSTEM INTEGRITY 100% ///</div>
-        
-        <!-- Assembly container with flying pieces -->
         <div class="assembly-container">
             <div class="piece piece-1"></div>
             <div class="piece piece-2"></div>
@@ -644,437 +615,434 @@
             <div class="piece piece-6"></div>
             <div class="piece piece-7"></div>
             <div class="piece piece-8"></div>
-            <div class="piece piece-9"></div>
-            <div class="piece piece-10"></div>
-            <div class="piece piece-11"></div>
-            <div class="piece piece-12"></div>
-            <div class="piece piece-hex piece-13"></div>
-            <div class="piece piece-hex piece-14"></div>
-            <div class="piece piece-hex piece-15"></div>
-            <div class="piece piece-hex piece-16"></div>
             
-            <!-- Energy burst -->
-            <div class="energy-burst"></div>
+            <div class="energy-ring"></div>
+            <div class="energy-ring"></div>
+            <div class="energy-ring"></div>
             
-            <!-- Expanding rings -->
-            <div class="ring ring-1"></div>
-            <div class="ring ring-2"></div>
-            <div class="ring ring-3"></div>
-            
-            <!-- Logo assembly -->
-            <div class="logo-assembly logo-glow">
+            <div class="logo-assembly">
                 <span>I</span><span>A</span><span>D</span><span>O</span><span>P</span><span>T</span>
             </div>
         </div>
         
-        <!-- Tagline -->
-        <div class="tagline">The Future of AI Automation</div>
+        <div class="tagline">THE FUTURE OF AI AUTOMATION</div>
         
-        <!-- Loading bar -->
         <div class="loading-bar">
             <div class="loading-bar-fill"></div>
         </div>
-        <div class="loading-text">SYSTEMS INITIALIZING</div>
         
-        <!-- Skip button -->
-        <button class="skip-btn" onclick="skipIntro()">SKIP →</button>
+        <button class="skip-btn" onclick="skipIntro()">SKIP INTRO</button>
     </div>
 
-    <!-- ==================== -->
-    <!-- MAIN CONTENT -->
-    <!-- ==================== -->
+    <!-- ====== PERSISTENT HUD ELEMENTS ====== -->
+    <div class="hud-corner hud-tl"></div>
+    <div class="hud-corner hud-tr"></div>
+    <div class="hud-corner hud-bl"></div>
+    <div class="hud-corner hud-br"></div>
+    <div class="global-grid"></div>
+
+    <!-- ====== MAIN CONTENT ====== -->
     <div id="main-content">
         <!-- Navigation -->
-        <nav class="fixed w-full top-0 z-50 nav-blur border-b border-white/5">
-            <div class="max-w-7xl mx-auto px-6 lg:px-8">
+        <nav class="nav-cyber fixed w-full top-0 z-50">
+            <div class="max-w-7xl mx-auto px-6">
                 <div class="flex justify-between h-20 items-center">
-                    <a href="/" class="flex items-center space-x-2">
-                        <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-indigo-500 to-purple-600 flex items-center justify-center">
-                            <span class="text-white font-bold text-xl">IA</span>
+                    <a href="/" class="flex items-center space-x-3">
+                        <div class="w-12 h-12 flex items-center justify-center border border-cyan-400 clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);">
+                            <span class="text-cyan-400 font-bold text-xl font-mono">IA</span>
                         </div>
-                        <span class="text-2xl font-bold text-gradient">IAdopt</span>
+                        <span class="text-2xl font-bold text-gradient font-mono tracking-wider">IADOPT</span>
                     </a>
                     
-                    <div class="hidden md:flex items-center space-x-8">
-                        <a href="#products" class="text-gray-400 hover:text-white transition line-animate">Products</a>
-                        <a href="pricing.html" class="text-gray-400 hover:text-white transition line-animate">Pricing</a>
-                        <a href="case-studies.html" class="text-gray-400 hover:text-white transition line-animate">Case Studies</a>
-                        <a href="#how-it-works" class="text-gray-400 hover:text-white transition line-animate">How It Works</a>
+                    <div class="hidden md:flex items-center space-x-10">
+                        <a href="#products" class="nav-link">Products</a>
+                        <a href="pricing.html" class="nav-link">Pricing</a>
+                        <a href="case-studies.html" class="nav-link">Case Studies</a>
+                        <a href="#how-it-works" class="nav-link">Process</a>
                     </div>
                     
-                    <a href="demo.html" class="btn-primary text-white text-sm">
-                        Book Demo <span class="ml-2">→</span>
-                    </a>
+                    <a href="demo.html" class="cyber-btn cyber-btn-filled">BOOK DEMO</a>
                 </div>
             </div>
         </nav>
 
         <!-- Hero Section -->
-        <section class="min-h-screen hero-gradient relative overflow-hidden pt-20">
-            <div class="orb orb-1"></div>
-            <div class="orb orb-2"></div>
-            <div class="orb orb-3"></div>
-            <div class="absolute inset-0 grid-pattern"></div>
-            <div id="particles-js"></div>
+        <section class="min-h-screen relative overflow-hidden pt-20 scan-section">
+            <div class="hex-pattern"></div>
             
-            <div class="relative z-10 max-w-7xl mx-auto px-6 lg:px-8 pt-32 pb-20">
+            <!-- Animated background orbs -->
+            <div class="absolute top-0 right-0 w-96 h-96 bg-cyan-500/20 rounded-full filter blur-3xl animate-pulse"></div>
+            <div class="absolute bottom-0 left-0 w-96 h-96 bg-purple-500/20 rounded-full filter blur-3xl animate-pulse" style="animation-delay: 1s;"></div>
+            <div class="absolute top-1/2 left-1/2 w-64 h-64 bg-blue-500/20 rounded-full filter blur-3xl animate-pulse" style="animation-delay: 2s;"></div>
+            
+            <div class="relative z-10 max-w-7xl mx-auto px-6 pt-32 pb-20">
                 <div class="text-center max-w-5xl mx-auto">
-                    <div data-aos="fade-down" data-aos-duration="800" class="inline-flex items-center glass rounded-full px-6 py-2 mb-8">
-                        <span class="w-2 h-2 bg-green-400 rounded-full animate-pulse mr-3"></span>
-                        <span class="text-sm text-gray-300">Trusted by 500+ enterprises worldwide</span>
+                    <!-- Status badge -->
+                    <div data-aos="zoom-in" data-aos-duration="600" class="inline-flex items-center border border-cyan-500/30 rounded-full px-6 py-2 mb-8 bg-cyan-500/5">
+                        <span class="w-2 h-2 bg-cyan-400 rounded-full animate-pulse mr-3"></span>
+                        <span class="text-sm text-cyan-400 font-mono tracking-wider">SYSTEM ONLINE • 500+ ENTERPRISES CONNECTED</span>
                     </div>
                     
-                    <h1 data-aos="fade-up" data-aos-duration="1000" class="text-5xl md:text-7xl lg:text-8xl font-bold mb-8 leading-tight">
-                        The Future of
-                        <span class="block text-gradient glow-text">AI Automation</span>
+                    <!-- Main heading with glitch -->
+                    <h1 data-aos="fade-up" data-aos-duration="800" class="text-5xl md:text-7xl lg:text-8xl font-bold mb-8 leading-tight">
+                        <span class="glitch neon-text" data-text="THE FUTURE OF">THE FUTURE OF</span>
+                        <span class="block text-gradient mt-4" style="filter: drop-shadow(0 0 30px rgba(0, 245, 255, 0.5));">AI AUTOMATION</span>
                     </h1>
                     
-                    <p data-aos="fade-up" data-aos-duration="1000" data-aos-delay="200" class="text-xl md:text-2xl text-gray-400 mb-12 max-w-3xl mx-auto leading-relaxed">
-                        Transform your operations with intelligent automation that learns, adapts, and scales. 
-                        From chatbots to autonomous agents — we're building the future.
+                    <!-- Subheading -->
+                    <p data-aos="fade-up" data-aos-delay="200" class="text-xl md:text-2xl text-gray-400 mb-12 max-w-3xl mx-auto leading-relaxed font-light">
+                        Transform your operations with intelligent automation that <span class="text-cyan-400">learns</span>, 
+                        <span class="text-purple-400">adapts</span>, and <span class="text-pink-400">scales</span>. 
+                        From chatbots to autonomous agents.
                     </p>
                     
-                    <div data-aos="fade-up" data-aos-duration="1000" data-aos-delay="400" class="flex flex-col sm:flex-row justify-center gap-4 mb-16">
-                        <a href="demo.html" class="btn-primary text-white text-lg">
-                            Start Free Trial
-                            <svg class="inline-block ml-2 w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"></path></svg>
+                    <!-- CTA buttons -->
+                    <div data-aos="fade-up" data-aos-delay="400" class="flex flex-col sm:flex-row justify-center gap-6 mb-20">
+                        <a href="demo.html" class="cyber-btn cyber-btn-filled">
+                            INITIALIZE DEMO
+                            <svg class="inline-block ml-3 w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"></path></svg>
                         </a>
-                        <a href="#products" class="btn-secondary text-white text-lg">Explore Products</a>
+                        <a href="#products" class="cyber-btn">EXPLORE SYSTEMS</a>
                     </div>
                     
-                    <div data-aos="fade-up" data-aos-duration="1000" data-aos-delay="600" class="grid grid-cols-2 md:grid-cols-4 gap-8 max-w-4xl mx-auto">
-                        <div class="text-center">
+                    <!-- Stats -->
+                    <div data-aos="fade-up" data-aos-delay="600" class="grid grid-cols-2 md:grid-cols-4 gap-6 max-w-4xl mx-auto">
+                        <div class="stat-box float" style="animation-delay: 0s;">
                             <div class="stat-number">500+</div>
-                            <div class="text-gray-500 text-sm uppercase tracking-wider">Enterprise Clients</div>
+                            <div class="text-gray-500 text-sm uppercase tracking-widest mt-2 font-mono">Enterprises</div>
+                            <div class="data-line mt-4 animate"></div>
                         </div>
-                        <div class="text-center">
+                        <div class="stat-box float" style="animation-delay: 0.5s;">
                             <div class="stat-number">$47M</div>
-                            <div class="text-gray-500 text-sm uppercase tracking-wider">Client Savings</div>
+                            <div class="text-gray-500 text-sm uppercase tracking-widest mt-2 font-mono">Saved</div>
+                            <div class="data-line mt-4 animate" style="animation-delay: 0.2s;"></div>
                         </div>
-                        <div class="text-center">
+                        <div class="stat-box float" style="animation-delay: 1s;">
                             <div class="stat-number">340%</div>
-                            <div class="text-gray-500 text-sm uppercase tracking-wider">Average ROI</div>
+                            <div class="text-gray-500 text-sm uppercase tracking-widest mt-2 font-mono">Avg ROI</div>
+                            <div class="data-line mt-4 animate" style="animation-delay: 0.4s;"></div>
                         </div>
-                        <div class="text-center">
+                        <div class="stat-box float" style="animation-delay: 1.5s;">
                             <div class="stat-number">99.9%</div>
-                            <div class="text-gray-500 text-sm uppercase tracking-wider">Uptime SLA</div>
+                            <div class="text-gray-500 text-sm uppercase tracking-widest mt-2 font-mono">Uptime</div>
+                            <div class="data-line mt-4 animate" style="animation-delay: 0.6s;"></div>
                         </div>
                     </div>
                 </div>
                 
                 <!-- Hero Dashboard -->
-                <div data-aos="zoom-in" data-aos-duration="1200" data-aos-delay="800" class="mt-20 relative">
-                    <div class="glass-strong rounded-3xl p-8 max-w-5xl mx-auto">
-                        <div class="grid grid-cols-3 gap-4">
-                            <div class="col-span-2 glass rounded-2xl p-6">
-                                <div class="flex items-center justify-between mb-4">
-                                    <span class="text-sm text-gray-400">Live Activity</span>
-                                    <span class="flex items-center text-green-400 text-sm">
-                                        <span class="w-2 h-2 bg-green-400 rounded-full animate-pulse mr-2"></span>Real-time
-                                    </span>
+                <div data-aos="zoom-in" data-aos-duration="1000" data-aos-delay="800" class="mt-24 relative">
+                    <div class="holo-card rounded-2xl p-8 max-w-5xl mx-auto">
+                        <div class="flex items-center justify-between mb-6">
+                            <div class="flex items-center">
+                                <div class="w-3 h-3 bg-cyan-400 rounded-full animate-pulse mr-3"></div>
+                                <span class="text-cyan-400 font-mono text-sm tracking-wider">LIVE NEURAL ACTIVITY</span>
+                            </div>
+                            <span class="text-gray-500 font-mono text-xs">REFRESHING: 0.5s</span>
+                        </div>
+                        
+                        <div class="grid grid-cols-3 gap-6">
+                            <div class="col-span-2 space-y-4">
+                                <div class="flex items-center p-4 bg-cyan-500/5 border border-cyan-500/20 rounded-lg pulse-glow">
+                                    <div class="w-10 h-10 bg-blue-500/20 rounded-lg flex items-center justify-center mr-4">
+                                        <svg class="w-5 h-5 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"></path></svg>
+                                    </div>
+                                    <div class="flex-1">
+                                        <div class="text-sm font-medium">IA CHAT // 47 conversations processed</div>
+                                        <div class="text-xs text-gray-500 font-mono">MediSure Health • 0.3s ago</div>
+                                    </div>
+                                    <span class="text-cyan-400 font-mono font-bold">+$2,340</span>
                                 </div>
-                                <div class="space-y-3">
-                                    <div class="flex items-center p-3 glass rounded-lg animate-pulse">
-                                        <div class="w-8 h-8 rounded-lg bg-blue-500/20 flex items-center justify-center mr-3">
-                                            <svg class="w-4 h-4 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"></path></svg>
-                                        </div>
-                                        <div class="flex-1">
-                                            <div class="text-sm">IA Chat handled 47 conversations</div>
-                                            <div class="text-xs text-gray-500">MediSure Health • Just now</div>
-                                        </div>
-                                        <span class="text-green-400 text-sm">+$2,340</span>
+                                
+                                <div class="flex items-center p-4 bg-purple-500/5 border border-purple-500/20 rounded-lg">
+                                    <div class="w-10 h-10 bg-purple-500/20 rounded-lg flex items-center justify-center mr-4">
+                                        <svg class="w-5 h-5 text-purple-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11a7 7 0 01-7 7m0 0a7 7 0 01-7-7m7 7v4m0 0H8m4 0h4m-4-8a3 3 0 01-3-3V5a3 3 0 116 0v6a3 3 0 01-3 3z"></path></svg>
                                     </div>
-                                    <div class="flex items-center p-3 glass rounded-lg" style="animation: pulse 3s infinite; animation-delay: 1s;">
-                                        <div class="w-8 h-8 rounded-lg bg-purple-500/20 flex items-center justify-center mr-3">
-                                            <svg class="w-4 h-4 text-purple-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11a7 7 0 01-7 7m0 0a7 7 0 01-7-7m7 7v4m0 0H8m4 0h4m-4-8a3 3 0 01-3-3V5a3 3 0 116 0v6a3 3 0 01-3 3z"></path></svg>
-                                        </div>
-                                        <div class="flex-1">
-                                            <div class="text-sm">IA Voice booked 12 appointments</div>
-                                            <div class="text-xs text-gray-500">LuxeRealty • 2 min ago</div>
-                                        </div>
-                                        <span class="text-green-400 text-sm">+$8,400</span>
+                                    <div class="flex-1">
+                                        <div class="text-sm font-medium">IA VOICE // 12 appointments booked</div>
+                                        <div class="text-xs text-gray-500 font-mono">LuxeRealty • 2.1s ago</div>
                                     </div>
-                                    <div class="flex items-center p-3 glass rounded-lg" style="animation: pulse 3s infinite; animation-delay: 2s;">
-                                        <div class="w-8 h-8 rounded-lg bg-emerald-500/20 flex items-center justify-center mr-3">
-                                            <svg class="w-4 h-4 text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
-                                        </div>
-                                        <div class="flex-1">
-                                            <div class="text-sm">IA Finance recovered $24,500</div>
-                                            <div class="text-xs text-gray-500">Meridian Capital • 5 min ago</div>
-                                        </div>
-                                        <span class="text-green-400 text-sm">+$24,500</span>
+                                    <span class="text-purple-400 font-mono font-bold">+$8,400</span>
+                                </div>
+                                
+                                <div class="flex items-center p-4 bg-emerald-500/5 border border-emerald-500/20 rounded-lg">
+                                    <div class="w-10 h-10 bg-emerald-500/20 rounded-lg flex items-center justify-center mr-4">
+                                        <svg class="w-5 h-5 text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
                                     </div>
+                                    <div class="flex-1">
+                                        <div class="text-sm font-medium">IA FINANCE // $24,500 recovered</div>
+                                        <div class="text-xs text-gray-500 font-mono">Meridian Capital • 5.4s ago</div>
+                                    </div>
+                                    <span class="text-emerald-400 font-mono font-bold">+$24,500</span>
                                 </div>
                             </div>
+                            
                             <div class="space-y-4">
-                                <div class="glass rounded-2xl p-6 text-center float" style="animation-delay: 0s;">
-                                    <div class="text-3xl font-bold text-gradient">2.4M</div>
-                                    <div class="text-xs text-gray-500 uppercase">Tasks Today</div>
+                                <div class="stat-box text-center float">
+                                    <div class="text-3xl font-bold text-gradient font-mono">2.4M</div>
+                                    <div class="text-xs text-gray-500 uppercase tracking-wider mt-1">Tasks Today</div>
                                 </div>
-                                <div class="glass rounded-2xl p-6 text-center float" style="animation-delay: 1s;">
-                                    <div class="text-3xl font-bold text-green-400">99.9%</div>
-                                    <div class="text-xs text-gray-500 uppercase">Success Rate</div>
+                                <div class="stat-box text-center float" style="animation-delay: 0.3s;">
+                                    <div class="text-3xl font-bold text-cyan-400 font-mono">99.9%</div>
+                                    <div class="text-xs text-gray-500 uppercase tracking-wider mt-1">Success</div>
                                 </div>
-                                <div class="glass rounded-2xl p-6 text-center float" style="animation-delay: 2s;">
-                                    <div class="text-3xl font-bold text-cyan-400">< 0.5s</div>
-                                    <div class="text-xs text-gray-500 uppercase">Response Time</div>
+                                <div class="stat-box text-center float" style="animation-delay: 0.6s;">
+                                    <div class="text-3xl font-bold text-purple-400 font-mono">&lt;0.5s</div>
+                                    <div class="text-xs text-gray-500 uppercase tracking-wider mt-1">Response</div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div class="absolute -bottom-20 left-1/2 transform -translate-x-1/2 w-3/4 h-40 bg-indigo-600/30 blur-3xl rounded-full"></div>
+                    
+                    <!-- Glow effect under dashboard -->
+                    <div class="absolute -bottom-20 left-1/2 transform -translate-x-1/2 w-3/4 h-32 bg-cyan-500/30 blur-3xl rounded-full"></div>
                 </div>
             </div>
         </section>
 
-        <!-- Logos Marquee -->
-        <section class="py-12 border-y border-white/5 bg-black/50">
+        <!-- Logo Marquee -->
+        <section class="py-12 border-y border-cyan-500/10 bg-black/50 scan-section">
             <div class="marquee">
                 <div class="marquee-content">
-                    <div class="flex items-center space-x-16 px-8">
-                        <span class="text-2xl font-bold text-gray-600 whitespace-nowrap">TechCorp</span>
-                        <span class="text-2xl font-bold text-gray-600 whitespace-nowrap">MediSure</span>
-                        <span class="text-2xl font-bold text-gray-600 whitespace-nowrap">LuxeRealty</span>
-                        <span class="text-2xl font-bold text-gray-600 whitespace-nowrap">UrbanStyle</span>
-                        <span class="text-2xl font-bold text-gray-600 whitespace-nowrap">Meridian Capital</span>
-                        <span class="text-2xl font-bold text-gray-600 whitespace-nowrap">Sterling Law</span>
-                        <span class="text-2xl font-bold text-gray-600 whitespace-nowrap">NexGen Health</span>
-                        <span class="text-2xl font-bold text-gray-600 whitespace-nowrap">Apex Finance</span>
+                    <div class="flex items-center space-x-20 px-10">
+                        <span class="text-2xl font-bold text-gray-700 whitespace-nowrap font-mono tracking-wider">TECHCORP</span>
+                        <span class="text-2xl font-bold text-gray-700 whitespace-nowrap font-mono tracking-wider">MEDISURE</span>
+                        <span class="text-2xl font-bold text-gray-700 whitespace-nowrap font-mono tracking-wider">LUXEREALTY</span>
+                        <span class="text-2xl font-bold text-gray-700 whitespace-nowrap font-mono tracking-wider">URBANSTYLE</span>
+                        <span class="text-2xl font-bold text-gray-700 whitespace-nowrap font-mono tracking-wider">MERIDIAN</span>
+                        <span class="text-2xl font-bold text-gray-700 whitespace-nowrap font-mono tracking-wider">STERLING</span>
+                        <span class="text-2xl font-bold text-gray-700 whitespace-nowrap font-mono tracking-wider">NEXGEN</span>
+                        <span class="text-2xl font-bold text-gray-700 whitespace-nowrap font-mono tracking-wider">APEX</span>
                     </div>
-                    <div class="flex items-center space-x-16 px-8">
-                        <span class="text-2xl font-bold text-gray-600 whitespace-nowrap">TechCorp</span>
-                        <span class="text-2xl font-bold text-gray-600 whitespace-nowrap">MediSure</span>
-                        <span class="text-2xl font-bold text-gray-600 whitespace-nowrap">LuxeRealty</span>
-                        <span class="text-2xl font-bold text-gray-600 whitespace-nowrap">UrbanStyle</span>
-                        <span class="text-2xl font-bold text-gray-600 whitespace-nowrap">Meridian Capital</span>
-                        <span class="text-2xl font-bold text-gray-600 whitespace-nowrap">Sterling Law</span>
-                        <span class="text-2xl font-bold text-gray-600 whitespace-nowrap">NexGen Health</span>
-                        <span class="text-2xl font-bold text-gray-600 whitespace-nowrap">Apex Finance</span>
+                    <div class="flex items-center space-x-20 px-10">
+                        <span class="text-2xl font-bold text-gray-700 whitespace-nowrap font-mono tracking-wider">TECHCORP</span>
+                        <span class="text-2xl font-bold text-gray-700 whitespace-nowrap font-mono tracking-wider">MEDISURE</span>
+                        <span class="text-2xl font-bold text-gray-700 whitespace-nowrap font-mono tracking-wider">LUXEREALTY</span>
+                        <span class="text-2xl font-bold text-gray-700 whitespace-nowrap font-mono tracking-wider">URBANSTYLE</span>
+                        <span class="text-2xl font-bold text-gray-700 whitespace-nowrap font-mono tracking-wider">MERIDIAN</span>
+                        <span class="text-2xl font-bold text-gray-700 whitespace-nowrap font-mono tracking-wider">STERLING</span>
+                        <span class="text-2xl font-bold text-gray-700 whitespace-nowrap font-mono tracking-wider">NEXGEN</span>
+                        <span class="text-2xl font-bold text-gray-700 whitespace-nowrap font-mono tracking-wider">APEX</span>
                     </div>
                 </div>
             </div>
         </section>
 
         <!-- Products Section -->
-        <section id="products" class="py-32 relative">
-            <div class="absolute inset-0 grid-pattern opacity-50"></div>
-            <div class="relative z-10 max-w-7xl mx-auto px-6 lg:px-8">
+        <section id="products" class="py-32 relative scan-section">
+            <div class="hex-pattern"></div>
+            
+            <div class="relative z-10 max-w-7xl mx-auto px-6">
                 <div class="text-center mb-20">
-                    <span data-aos="fade-up" class="text-indigo-400 text-sm font-semibold uppercase tracking-wider">Our Products</span>
+                    <span data-aos="fade-up" class="text-cyan-400 text-sm font-mono tracking-widest">// SYSTEM MODULES</span>
                     <h2 data-aos="fade-up" data-aos-delay="100" class="text-4xl md:text-6xl font-bold mt-4 mb-6">
-                        Six Powerful <span class="text-gradient">AI Solutions</span>
+                        <span class="text-gradient">SIX POWERFUL</span> AI SYSTEMS
                     </h2>
                     <p data-aos="fade-up" data-aos-delay="200" class="text-xl text-gray-400 max-w-3xl mx-auto">
-                        Each product engineered to solve specific business challenges with cutting-edge AI technology.
+                        Each module engineered for specific operational challenges
                     </p>
                 </div>
                 
                 <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-                    <div data-aos="fade-up" data-aos-delay="0" class="product-card rounded-2xl p-8 card-3d">
-                        <div class="product-icon w-16 h-16 rounded-2xl bg-gradient-to-br from-blue-500 to-blue-700 flex items-center justify-center mb-6">
-                            <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"></path></svg>
+                    <!-- IA Chat -->
+                    <div data-aos="fade-up" data-aos-delay="0" class="product-card rounded-2xl p-8">
+                        <div class="product-icon mb-6">
+                            <svg class="w-8 h-8 text-cyan-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"></path></svg>
                         </div>
-                        <h3 class="text-2xl font-bold mb-3">IA Chat</h3>
-                        <p class="text-gray-400 mb-6">Intelligent chatbots that turn conversations into conversions across web, WhatsApp, and social platforms.</p>
-                        <div class="flex items-center justify-between pt-4 border-t border-white/10">
-                            <span class="text-2xl font-bold">$2,500<span class="text-sm text-gray-500">/mo</span></span>
-                            <a href="products.html#ia-chat" class="text-indigo-400 hover:text-indigo-300 transition">Learn more →</a>
-                        </div>
-                    </div>
-                    
-                    <div data-aos="fade-up" data-aos-delay="100" class="product-card rounded-2xl p-8 card-3d">
-                        <div class="product-icon w-16 h-16 rounded-2xl bg-gradient-to-br from-purple-500 to-purple-700 flex items-center justify-center mb-6">
-                            <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11a7 7 0 01-7 7m0 0a7 7 0 01-7-7m7 7v4m0 0H8m4 0h4m-4-8a3 3 0 01-3-3V5a3 3 0 116 0v6a3 3 0 01-3 3z"></path></svg>
-                        </div>
-                        <h3 class="text-2xl font-bold mb-3">IA Voice</h3>
-                        <p class="text-gray-400 mb-6">Natural voice AI that answers calls, books appointments, and guides customers 24/7.</p>
-                        <div class="flex items-center justify-between pt-4 border-t border-white/10">
-                            <span class="text-2xl font-bold">$3,500<span class="text-sm text-gray-500">/mo</span></span>
-                            <a href="products.html#ia-voice" class="text-indigo-400 hover:text-indigo-300 transition">Learn more →</a>
+                        <h3 class="text-2xl font-bold mb-3 font-mono">IA CHAT</h3>
+                        <p class="text-gray-400 mb-6 leading-relaxed">Intelligent chatbots transforming conversations into conversions across all platforms.</p>
+                        <div class="flex items-center justify-between pt-4 border-t border-cyan-500/20">
+                            <span class="text-2xl font-bold text-cyan-400 font-mono">$2,500<span class="text-sm text-gray-500">/mo</span></span>
+                            <a href="products.html#ia-chat" class="text-cyan-400 hover:text-cyan-300 transition font-mono text-sm">DEPLOY →</a>
                         </div>
                     </div>
                     
-                    <div data-aos="fade-up" data-aos-delay="200" class="product-card rounded-2xl p-8 card-3d">
-                        <div class="product-icon w-16 h-16 rounded-2xl bg-gradient-to-br from-green-500 to-emerald-700 flex items-center justify-center mb-6">
-                            <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
+                    <!-- IA Voice -->
+                    <div data-aos="fade-up" data-aos-delay="100" class="product-card rounded-2xl p-8">
+                        <div class="product-icon mb-6">
+                            <svg class="w-8 h-8 text-purple-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19 11a7 7 0 01-7 7m0 0a7 7 0 01-7-7m7 7v4m0 0H8m4 0h4m-4-8a3 3 0 01-3-3V5a3 3 0 116 0v6a3 3 0 01-3 3z"></path></svg>
                         </div>
-                        <h3 class="text-2xl font-bold mb-3">IA Agent</h3>
-                        <p class="text-gray-400 mb-6">Autonomous AI agents handling CRM updates, data syncing, and complex workflow automation.</p>
-                        <div class="flex items-center justify-between pt-4 border-t border-white/10">
-                            <span class="text-2xl font-bold">$5,000<span class="text-sm text-gray-500">/mo</span></span>
-                            <a href="products.html#ia-agent" class="text-indigo-400 hover:text-indigo-300 transition">Learn more →</a>
-                        </div>
-                    </div>
-                    
-                    <div data-aos="fade-up" data-aos-delay="300" class="product-card rounded-2xl p-8 card-3d">
-                        <div class="product-icon w-16 h-16 rounded-2xl bg-gradient-to-br from-orange-500 to-orange-700 flex items-center justify-center mb-6">
-                            <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"></path></svg>
-                        </div>
-                        <h3 class="text-2xl font-bold mb-3">IA ERP</h3>
-                        <p class="text-gray-400 mb-6">Unified business platform with CRM, Finance, HR, and Operations powered by AI insights.</p>
-                        <div class="flex items-center justify-between pt-4 border-t border-white/10">
-                            <span class="text-2xl font-bold">$8,000<span class="text-sm text-gray-500">/mo</span></span>
-                            <a href="products.html#ia-erp" class="text-indigo-400 hover:text-indigo-300 transition">Learn more →</a>
+                        <h3 class="text-2xl font-bold mb-3 font-mono">IA VOICE</h3>
+                        <p class="text-gray-400 mb-6 leading-relaxed">Natural voice AI handling calls and appointments with human-like precision.</p>
+                        <div class="flex items-center justify-between pt-4 border-t border-purple-500/20">
+                            <span class="text-2xl font-bold text-purple-400 font-mono">$3,500<span class="text-sm text-gray-500">/mo</span></span>
+                            <a href="products.html#ia-voice" class="text-purple-400 hover:text-purple-300 transition font-mono text-sm">DEPLOY →</a>
                         </div>
                     </div>
                     
-                    <div data-aos="fade-up" data-aos-delay="400" class="product-card rounded-2xl p-8 card-3d">
-                        <div class="product-icon w-16 h-16 rounded-2xl bg-gradient-to-br from-emerald-500 to-teal-700 flex items-center justify-center mb-6">
-                            <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                    <!-- IA Agent -->
+                    <div data-aos="fade-up" data-aos-delay="200" class="product-card rounded-2xl p-8">
+                        <div class="product-icon mb-6">
+                            <svg class="w-8 h-8 text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
                         </div>
-                        <h3 class="text-2xl font-bold mb-3">IA Finance</h3>
-                        <p class="text-gray-400 mb-6">AI-powered invoice automation, fraud detection, and smart payment collection.</p>
-                        <div class="flex items-center justify-between pt-4 border-t border-white/10">
-                            <span class="text-2xl font-bold">$4,000<span class="text-sm text-gray-500">/mo</span></span>
-                            <a href="products.html#ia-finance" class="text-indigo-400 hover:text-indigo-300 transition">Learn more →</a>
+                        <h3 class="text-2xl font-bold mb-3 font-mono">IA AGENT</h3>
+                        <p class="text-gray-400 mb-6 leading-relaxed">Autonomous agents executing complex workflows and CRM automation.</p>
+                        <div class="flex items-center justify-between pt-4 border-t border-emerald-500/20">
+                            <span class="text-2xl font-bold text-emerald-400 font-mono">$5,000<span class="text-sm text-gray-500">/mo</span></span>
+                            <a href="products.html#ia-agent" class="text-emerald-400 hover:text-emerald-300 transition font-mono text-sm">DEPLOY →</a>
                         </div>
                     </div>
                     
-                    <div data-aos="fade-up" data-aos-delay="500" class="product-card rounded-2xl p-8 card-3d">
-                        <div class="product-icon w-16 h-16 rounded-2xl bg-gradient-to-br from-red-500 to-rose-700 flex items-center justify-center mb-6">
-                            <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path></svg>
+                    <!-- IA ERP -->
+                    <div data-aos="fade-up" data-aos-delay="300" class="product-card rounded-2xl p-8">
+                        <div class="product-icon mb-6">
+                            <svg class="w-8 h-8 text-orange-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"></path></svg>
                         </div>
-                        <h3 class="text-2xl font-bold mb-3">IA Watch</h3>
-                        <p class="text-gray-400 mb-6">Intelligent surveillance with behavior detection and real-time security alerts.</p>
-                        <div class="flex items-center justify-between pt-4 border-t border-white/10">
-                            <span class="text-2xl font-bold">$3,000<span class="text-sm text-gray-500">/mo</span></span>
-                            <a href="products.html#ia-watch" class="text-indigo-400 hover:text-indigo-300 transition">Learn more →</a>
+                        <h3 class="text-2xl font-bold mb-3 font-mono">IA ERP</h3>
+                        <p class="text-gray-400 mb-6 leading-relaxed">Unified business platform with AI-powered insights and automation.</p>
+                        <div class="flex items-center justify-between pt-4 border-t border-orange-500/20">
+                            <span class="text-2xl font-bold text-orange-400 font-mono">$8,000<span class="text-sm text-gray-500">/mo</span></span>
+                            <a href="products.html#ia-erp" class="text-orange-400 hover:text-orange-300 transition font-mono text-sm">DEPLOY →</a>
+                        </div>
+                    </div>
+                    
+                    <!-- IA Finance -->
+                    <div data-aos="fade-up" data-aos-delay="400" class="product-card rounded-2xl p-8">
+                        <div class="product-icon mb-6">
+                            <svg class="w-8 h-8 text-teal-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                        </div>
+                        <h3 class="text-2xl font-bold mb-3 font-mono">IA FINANCE</h3>
+                        <p class="text-gray-400 mb-6 leading-relaxed">AI-powered invoicing, fraud detection, and payment recovery systems.</p>
+                        <div class="flex items-center justify-between pt-4 border-t border-teal-500/20">
+                            <span class="text-2xl font-bold text-teal-400 font-mono">$4,000<span class="text-sm text-gray-500">/mo</span></span>
+                            <a href="products.html#ia-finance" class="text-teal-400 hover:text-teal-300 transition font-mono text-sm">DEPLOY →</a>
+                        </div>
+                    </div>
+                    
+                    <!-- IA Watch -->
+                    <div data-aos="fade-up" data-aos-delay="500" class="product-card rounded-2xl p-8">
+                        <div class="product-icon mb-6">
+                            <svg class="w-8 h-8 text-red-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path></svg>
+                        </div>
+                        <h3 class="text-2xl font-bold mb-3 font-mono">IA WATCH</h3>
+                        <p class="text-gray-400 mb-6 leading-relaxed">Intelligent surveillance with behavior detection and real-time alerts.</p>
+                        <div class="flex items-center justify-between pt-4 border-t border-red-500/20">
+                            <span class="text-2xl font-bold text-red-400 font-mono">$3,000<span class="text-sm text-gray-500">/mo</span></span>
+                            <a href="products.html#ia-watch" class="text-red-400 hover:text-red-300 transition font-mono text-sm">DEPLOY →</a>
                         </div>
                     </div>
                 </div>
                 
                 <div data-aos="fade-up" class="text-center mt-16">
-                    <a href="products.html" class="btn-primary text-white inline-flex items-center">
-                        View All Products
-                        <svg class="ml-2 w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"></path></svg>
-                    </a>
+                    <a href="products.html" class="cyber-btn cyber-btn-filled">VIEW ALL SYSTEMS</a>
                 </div>
             </div>
         </section>
 
         <!-- How It Works -->
-        <section id="how-it-works" class="py-32 relative overflow-hidden">
-            <div class="absolute top-0 left-1/4 w-96 h-96 bg-indigo-600/20 rounded-full blur-3xl"></div>
-            <div class="absolute bottom-0 right-1/4 w-96 h-96 bg-purple-600/20 rounded-full blur-3xl"></div>
+        <section id="how-it-works" class="py-32 relative overflow-hidden scan-section">
+            <div class="absolute top-1/4 left-0 w-96 h-96 bg-cyan-500/10 rounded-full filter blur-3xl"></div>
+            <div class="absolute bottom-1/4 right-0 w-96 h-96 bg-purple-500/10 rounded-full filter blur-3xl"></div>
             
-            <div class="relative z-10 max-w-7xl mx-auto px-6 lg:px-8">
+            <div class="relative z-10 max-w-7xl mx-auto px-6">
                 <div class="text-center mb-20">
-                    <span data-aos="fade-up" class="text-indigo-400 text-sm font-semibold uppercase tracking-wider">How It Works</span>
+                    <span data-aos="fade-up" class="text-cyan-400 text-sm font-mono tracking-widest">// INITIALIZATION PROTOCOL</span>
                     <h2 data-aos="fade-up" data-aos-delay="100" class="text-4xl md:text-6xl font-bold mt-4 mb-6">
-                        Three Steps to <span class="text-gradient">Transformation</span>
+                        THREE STEPS TO <span class="text-gradient">TRANSFORMATION</span>
                     </h2>
                 </div>
                 
-                <div class="grid md:grid-cols-3 gap-8">
+                <div class="grid md:grid-cols-3 gap-12">
                     <div data-aos="fade-up" data-aos-delay="0" class="text-center">
                         <div class="relative inline-block mb-8">
-                            <div class="w-24 h-24 rounded-3xl bg-gradient-to-br from-indigo-500 to-purple-600 flex items-center justify-center text-4xl font-bold text-white" style="box-shadow: 0 0 50px rgba(99, 102, 241, 0.3);">1</div>
+                            <div class="w-28 h-28 rounded-full bg-gradient-to-br from-cyan-500 to-blue-600 flex items-center justify-center text-4xl font-bold text-black font-mono pulse-glow">01</div>
+                            <div class="absolute -right-8 top-1/2 transform -translate-y-1/2 hidden md:block">
+                                <svg class="w-16 h-4 text-cyan-500/50" fill="none" stroke="currentColor" viewBox="0 0 64 16"><path stroke-linecap="round" stroke-width="2" stroke-dasharray="4 4" d="M0 8h60"></path></svg>
+                            </div>
                         </div>
-                        <h3 class="text-2xl font-bold mb-4">Choose Your Solution</h3>
-                        <p class="text-gray-400">Select from our range of AI products tailored to your specific business needs.</p>
+                        <h3 class="text-2xl font-bold mb-4 font-mono">SELECT MODULE</h3>
+                        <p class="text-gray-400">Choose from our AI systems based on your operational requirements</p>
                     </div>
                     
                     <div data-aos="fade-up" data-aos-delay="200" class="text-center">
                         <div class="relative inline-block mb-8">
-                            <div class="w-24 h-24 rounded-3xl bg-gradient-to-br from-purple-500 to-pink-600 flex items-center justify-center text-4xl font-bold text-white" style="box-shadow: 0 0 50px rgba(139, 92, 246, 0.3);">2</div>
+                            <div class="w-28 h-28 rounded-full bg-gradient-to-br from-purple-500 to-pink-600 flex items-center justify-center text-4xl font-bold text-black font-mono pulse-glow">02</div>
+                            <div class="absolute -right-8 top-1/2 transform -translate-y-1/2 hidden md:block">
+                                <svg class="w-16 h-4 text-purple-500/50" fill="none" stroke="currentColor" viewBox="0 0 64 16"><path stroke-linecap="round" stroke-width="2" stroke-dasharray="4 4" d="M0 8h60"></path></svg>
+                            </div>
                         </div>
-                        <h3 class="text-2xl font-bold mb-4">Deploy in 48 Hours</h3>
-                        <p class="text-gray-400">No-code setup with guided onboarding. Connect your platforms and go live instantly.</p>
+                        <h3 class="text-2xl font-bold mb-4 font-mono">DEPLOY IN 48H</h3>
+                        <p class="text-gray-400">Zero-code deployment with guided system integration</p>
                     </div>
                     
                     <div data-aos="fade-up" data-aos-delay="400" class="text-center">
                         <div class="relative inline-block mb-8">
-                            <div class="w-24 h-24 rounded-3xl bg-gradient-to-br from-cyan-500 to-blue-600 flex items-center justify-center text-4xl font-bold text-white" style="box-shadow: 0 0 50px rgba(6, 182, 212, 0.3);">3</div>
+                            <div class="w-28 h-28 rounded-full bg-gradient-to-br from-emerald-500 to-teal-600 flex items-center justify-center text-4xl font-bold text-black font-mono pulse-glow">03</div>
                         </div>
-                        <h3 class="text-2xl font-bold mb-4">Scale Infinitely</h3>
-                        <p class="text-gray-400">AI handles the work 24/7 while you focus on growing your business exponentially.</p>
+                        <h3 class="text-2xl font-bold mb-4 font-mono">SCALE INFINITE</h3>
+                        <p class="text-gray-400">AI operates 24/7 while you focus on growth</p>
                     </div>
                 </div>
             </div>
         </section>
 
         <!-- CTA Section -->
-        <section class="py-32 relative overflow-hidden">
-            <div class="absolute inset-0 bg-gradient-to-b from-indigo-900/50 to-transparent"></div>
-            <div class="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-indigo-500 to-transparent"></div>
+        <section class="py-32 relative overflow-hidden scan-section">
+            <div class="absolute inset-0 bg-gradient-to-b from-cyan-900/20 to-transparent"></div>
+            <div class="hex-pattern"></div>
             
-            <div class="relative z-10 max-w-4xl mx-auto px-6 lg:px-8 text-center">
+            <div class="relative z-10 max-w-4xl mx-auto px-6 text-center">
                 <h2 data-aos="fade-up" class="text-4xl md:text-6xl font-bold mb-6">
-                    Ready to <span class="text-gradient">Transform</span> Your Business?
+                    READY TO <span class="text-gradient">INITIALIZE</span>?
                 </h2>
                 <p data-aos="fade-up" data-aos-delay="100" class="text-xl text-gray-400 mb-12">
-                    Join 500+ enterprises already using IAdopt AI. Start your journey today.
+                    Join 500+ enterprises already running on IAdopt systems
                 </p>
                 
-                <div data-aos="fade-up" data-aos-delay="200" class="flex flex-col sm:flex-row justify-center gap-4 mb-12">
-                    <a href="demo.html" class="btn-primary text-white text-lg">
-                        Book Free Demo
-                        <svg class="inline-block ml-2 w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"></path></svg>
-                    </a>
-                    <a href="pricing.html" class="btn-secondary text-white text-lg">View Pricing</a>
+                <div data-aos="fade-up" data-aos-delay="200" class="flex flex-col sm:flex-row justify-center gap-6 mb-12">
+                    <a href="demo.html" class="cyber-btn cyber-btn-filled">BOOK FREE DEMO</a>
+                    <a href="pricing.html" class="cyber-btn">VIEW PRICING</a>
                 </div>
                 
-                <p data-aos="fade-up" data-aos-delay="300" class="text-sm text-gray-500">
-                    <strong class="text-indigo-400">90-Day ROI Guarantee:</strong> 2X your investment or get your implementation fee back.
+                <p data-aos="fade-up" data-aos-delay="300" class="text-sm text-gray-500 font-mono">
+                    <span class="text-cyan-400">90-DAY ROI GUARANTEE</span> // 2X return or implementation fee refunded
                 </p>
             </div>
         </section>
 
         <!-- Footer -->
-        <footer class="py-20 border-t border-white/5">
-            <div class="max-w-7xl mx-auto px-6 lg:px-8">
-                <div class="grid md:grid-cols-5 gap-12 mb-16">
-                    <div class="md:col-span-2">
-                        <div class="flex items-center space-x-2 mb-6">
-                            <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-indigo-500 to-purple-600 flex items-center justify-center">
-                                <span class="text-white font-bold text-xl">IA</span>
-                            </div>
-                            <span class="text-2xl font-bold">IAdopt</span>
+        <footer class="py-20 border-t border-cyan-500/10">
+            <div class="max-w-7xl mx-auto px-6">
+                <div class="grid md:grid-cols-4 gap-12 mb-16">
+                    <div>
+                        <div class="flex items-center space-x-3 mb-6">
+                            <span class="text-2xl font-bold text-gradient font-mono">IADOPT</span>
                         </div>
-                        <p class="text-gray-500 mb-6">Pioneering the future of AI automation for modern enterprises.</p>
+                        <p class="text-gray-500 text-sm">Pioneering the future of AI automation for enterprises.</p>
                     </div>
                     
                     <div>
-                        <h4 class="font-semibold mb-4">Products</h4>
-                        <ul class="space-y-3 text-gray-500">
-                            <li><a href="products.html#ia-chat" class="hover:text-white transition">IA Chat</a></li>
-                            <li><a href="products.html#ia-voice" class="hover:text-white transition">IA Voice</a></li>
-                            <li><a href="products.html#ia-agent" class="hover:text-white transition">IA Agent</a></li>
-                            <li><a href="products.html#ia-erp" class="hover:text-white transition">IA ERP</a></li>
-                            <li><a href="products.html#ia-finance" class="hover:text-white transition">IA Finance</a></li>
-                            <li><a href="products.html#ia-watch" class="hover:text-white transition">IA Watch</a></li>
+                        <h4 class="font-mono text-sm text-cyan-400 mb-4 tracking-wider">SYSTEMS</h4>
+                        <ul class="space-y-3 text-gray-500 text-sm">
+                            <li><a href="products.html" class="hover:text-cyan-400 transition">IA Chat</a></li>
+                            <li><a href="products.html" class="hover:text-cyan-400 transition">IA Voice</a></li>
+                            <li><a href="products.html" class="hover:text-cyan-400 transition">IA Agent</a></li>
+                            <li><a href="products.html" class="hover:text-cyan-400 transition">IA ERP</a></li>
                         </ul>
                     </div>
                     
                     <div>
-                        <h4 class="font-semibold mb-4">Company</h4>
-                        <ul class="space-y-3 text-gray-500">
-                            <li><a href="#" class="hover:text-white transition">About Us</a></li>
-                            <li><a href="case-studies.html" class="hover:text-white transition">Case Studies</a></li>
-                            <li><a href="#" class="hover:text-white transition">Blog</a></li>
-                            <li><a href="#" class="hover:text-white transition">Careers</a></li>
-                            <li><a href="#" class="hover:text-white transition">Contact</a></li>
+                        <h4 class="font-mono text-sm text-cyan-400 mb-4 tracking-wider">COMPANY</h4>
+                        <ul class="space-y-3 text-gray-500 text-sm">
+                            <li><a href="case-studies.html" class="hover:text-cyan-400 transition">Case Studies</a></li>
+                            <li><a href="pricing.html" class="hover:text-cyan-400 transition">Pricing</a></li>
+                            <li><a href="#" class="hover:text-cyan-400 transition">About</a></li>
+                            <li><a href="#" class="hover:text-cyan-400 transition">Contact</a></li>
                         </ul>
                     </div>
                     
                     <div>
-                        <h4 class="font-semibold mb-4">Contact</h4>
-                        <ul class="space-y-3 text-gray-500">
+                        <h4 class="font-mono text-sm text-cyan-400 mb-4 tracking-wider">CONTACT</h4>
+                        <ul class="space-y-3 text-gray-500 text-sm">
                             <li>hello@iadopt.ai</li>
                             <li>+1 (555) 123-4567</li>
-                            <li class="pt-4">
-                                <a href="demo.html" class="btn-primary text-white text-sm inline-block">Book Demo</a>
-                            </li>
                         </ul>
+                        <a href="demo.html" class="cyber-btn mt-6 inline-block text-xs py-3 px-6">BOOK DEMO</a>
                     </div>
                 </div>
                 
-                <div class="pt-8 border-t border-white/5 flex flex-col md:flex-row justify-between items-center text-sm text-gray-500">
-                    <p>© 2026 IAdopt AI. All rights reserved.</p>
-                    <div class="flex space-x-6 mt-4 md:mt-0">
-                        <a href="#" class="hover:text-white transition">Privacy Policy</a>
-                        <a href="#" class="hover:text-white transition">Terms of Service</a>
-                    </div>
+                <div class="pt-8 border-t border-cyan-500/10 text-center text-sm text-gray-600 font-mono">
+                    © 2026 IADOPT AI SYSTEMS // ALL RIGHTS RESERVED
                 </div>
             </div>
         </footer>
@@ -1082,50 +1050,75 @@
 
     <!-- Scripts -->
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
     
     <script>
-        // Skip intro function
+        // Skip intro
         function skipIntro() {
             document.getElementById('intro-overlay').classList.add('fade-out');
             setTimeout(() => {
                 document.getElementById('main-content').classList.add('visible');
-                AOS.init({ duration: 800, easing: 'ease-out-cubic', once: true, offset: 50 });
-                initParticles();
+                initAnimations();
             }, 500);
         }
         
-        // Auto-end intro after animation completes
+        // Auto-end intro
         setTimeout(() => {
             document.getElementById('intro-overlay').classList.add('fade-out');
             setTimeout(() => {
                 document.getElementById('main-content').classList.add('visible');
-                AOS.init({ duration: 800, easing: 'ease-out-cubic', once: true, offset: 50 });
-                initParticles();
+                initAnimations();
             }, 500);
-        }, 4000);
+        }, 3000);
         
-        // Initialize particles
-        function initParticles() {
-            if (document.getElementById('particles-js')) {
-                particlesJS('particles-js', {
-                    particles: {
-                        number: { value: 80, density: { enable: true, value_area: 800 } },
-                        color: { value: '#6366f1' },
-                        shape: { type: 'circle' },
-                        opacity: { value: 0.3, random: true },
-                        size: { value: 3, random: true },
-                        line_linked: { enable: true, distance: 150, color: '#6366f1', opacity: 0.1, width: 1 },
-                        move: { enable: true, speed: 1, direction: 'none', random: true, out_mode: 'out' }
-                    },
-                    interactivity: {
-                        detect_on: 'canvas',
-                        events: { onhover: { enable: true, mode: 'grab' }, resize: true },
-                        modes: { grab: { distance: 140, line_linked: { opacity: 0.3 } } }
-                    },
-                    retina_detect: true
+        function initAnimations() {
+            // Initialize AOS
+            AOS.init({
+                duration: 800,
+                easing: 'ease-out-cubic',
+                once: true,
+                offset: 100
+            });
+            
+            // GSAP ScrollTrigger for section scanning
+            gsap.registerPlugin(ScrollTrigger);
+            
+            document.querySelectorAll('.scan-section').forEach(section => {
+                ScrollTrigger.create({
+                    trigger: section,
+                    start: 'top 80%',
+                    onEnter: () => section.classList.add('in-view')
                 });
-            }
+            });
+            
+            // Animate data lines on scroll
+            document.querySelectorAll('.data-line').forEach(line => {
+                ScrollTrigger.create({
+                    trigger: line,
+                    start: 'top 90%',
+                    onEnter: () => line.classList.add('animate')
+                });
+            });
+            
+            // Parallax effect on orbs
+            gsap.to('.bg-cyan-500\\/20', {
+                y: -100,
+                scrollTrigger: {
+                    trigger: 'body',
+                    start: 'top top',
+                    end: 'bottom bottom',
+                    scrub: 1
+                }
+            });
+            
+            gsap.to('.bg-purple-500\\/20', {
+                y: 100,
+                scrollTrigger: {
+                    trigger: 'body',
+                    start: 'top top',
+                    end: 'bottom bottom',
+                    scrub: 1
+                }
+            });
         }
         
         // Smooth scroll

@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Products | IAdopt - Next Gen AI Automation</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Inter', sans-serif; }
+        .gradient-bg { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); }
+        .card-hover:hover { transform: translateY(-5px); box-shadow: 0 20px 40px rgba(0,0,0,0.1); }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <!-- Navigation -->
+    <nav class="bg-white shadow-sm sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16 items-center">
+                <div class="flex items-center">
+                    <span class="text-2xl font-bold text-indigo-600">IAdopt</span>
+                </div>
+                <div class="hidden md:flex space-x-8">
+                    <a href="/" class="text-gray-600 hover:text-indigo-600">Home</a>
+                    <a href="/products" class="text-indigo-600 font-medium">Products</a>
+                    <a href="/pricing" class="text-gray-600 hover:text-indigo-600">Pricing</a>
+                    <a href="/case-studies" class="text-gray-600 hover:text-indigo-600">Case Studies</a>
+                    <a href="/contact" class="text-gray-600 hover:text-indigo-600">Contact</a>
+                </div>
+                <a href="/demo" class="bg-indigo-600 text-white px-6 py-2 rounded-lg hover:bg-indigo-700 transition">Book Demo</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero -->
+    <section class="gradient-bg text-white py-20">
+        <div class="max-w-7xl mx-auto px-4 text-center">
+            <h1 class="text-4xl md:text-5xl font-bold mb-6">Enterprise AI Products</h1>
+            <p class="text-xl text-indigo-100 max-w-3xl mx-auto">Six powerful AI solutions designed to automate your business operations and 10x your team's productivity.</p>
+        </div>
+    </section>
+
+    <!-- Products Grid -->
+    <section class="py-20">
+        <div class="max-w-7xl mx-auto px-4">
+            
+            <!-- IA Chat -->
+            <div id="ia-chat" class="bg-white rounded-2xl shadow-lg p-8 mb-12 card-hover transition-all duration-300">
+                <div class="grid md:grid-cols-2 gap-12 items-center">
+                    <div>
+                        <div class="inline-block bg-blue-100 text-blue-600 px-4 py-1 rounded-full text-sm font-medium mb-4">Most Popular</div>
+                        <h2 class="text-3xl font-bold text-gray-900 mb-4">IA Chat</h2>
+                        <p class="text-xl text-gray-600 mb-6">Intelligent chatbots that turn conversations into conversions. Deploy on web, WhatsApp, Instagram, or any platform in minutes.</p>
+                        
+                        <div class="space-y-4 mb-8">
+                            <div class="flex items-start">
+                                <svg class="w-6 h-6 text-green-500 mr-3 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                                <div>
+                                    <h4 class="font-semibold">24/7 Lead Qualification</h4>
+                                    <p class="text-gray-600">Automatically qualify leads while you sleep. Average 340% increase in qualified leads.</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start">
+                                <svg class="w-6 h-6 text-green-500 mr-3 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                                <div>
+                                    <h4 class="font-semibold">Multi-Platform Deploy</h4>
+                                    <p class="text-gray-600">One bot, everywhere. Website, WhatsApp, Facebook, Instagram, Telegram.</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start">
+                                <svg class="w-6 h-6 text-green-500 mr-3 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                                <div>
+                                    <h4 class="font-semibold">Human Handoff</h4>
+                                    <p class="text-gray-600">Seamlessly transfer to human agents when needed. Never lose a deal.</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-center space-x-4">
+                            <a href="/demo?product=chat" class="bg-indigo-600 text-white px-8 py-3 rounded-lg hover:bg-indigo-700 transition font-medium">Get Demo</a>
+                            <span class="text-gray-500">Starting at $2,500/mo</span>
+                        </div>
+                    </div>
+                    <div class="bg-gradient-to-br from-blue-50 to-indigo-100 rounded-xl p-8">
+                        <div class="bg-white rounded-lg shadow-lg p-4">
+                            <div class="flex items-center mb-4">
+                                <div class="w-10 h-10 bg-indigo-600 rounded-full flex items-center justify-center text-white font-bold">IA</div>
+                                <div class="ml-3">
+                                    <div class="font-medium">IA Chat Assistant</div>
+                                    <div class="text-xs text-green-500">● Online</div>
+                                </div>
+                            </div>
+                            <div class="space-y-3">
+                                <div class="bg-gray-100 rounded-lg p-3 max-w-[80%]">
+                                    <p class="text-sm">Hi! 👋 I'm here to help you find the perfect solution. What brings you here today?</p>
+                                </div>
+                                <div class="bg-indigo-600 text-white rounded-lg p-3 max-w-[80%] ml-auto">
+                                    <p class="text-sm">I need help automating customer support</p>
+                                </div>
+                                <div class="bg-gray-100 rounded-lg p-3 max-w-[80%]">
+                                    <p class="text-sm">Great choice! Our AI can handle 80% of support tickets automatically. Would you like to see a demo?</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- IA Voice -->
+            <div id="ia-voice" class="bg-white rounded-2xl shadow-lg p-8 mb-12 card-hover transition-all duration-300">
+                <div class="grid md:grid-cols-2 gap-12 items-center">
+                    <div class="order-2 md:order-1 bg-gradient-to-br from-purple-50 to-pink-100 rounded-xl p-8">
+                        <div class="bg-white rounded-lg shadow-lg p-6 text-center">
+                            <div class="w-24 h-24 bg-purple-100 rounded-full mx-auto mb-4 flex items-center justify-center">
+                                <svg class="w-12 h-12 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11a7 7 0 01-7 7m0 0a7 7 0 01-7-7m7 7v4m0 0H8m4 0h4m-4-8a3 3 0 01-3-3V5a3 3 0 116 0v6a3 3 0 01-3 3z"></path></svg>
+                            </div>
+                            <div class="text-2xl font-bold text-gray-900 mb-2">IA Voice Active</div>
+                            <div class="flex justify-center space-x-1 mb-4">
+                                <div class="w-1 h-8 bg-purple-400 rounded animate-pulse"></div>
+                                <div class="w-1 h-12 bg-purple-500 rounded animate-pulse" style="animation-delay: 0.1s"></div>
+                                <div class="w-1 h-6 bg-purple-400 rounded animate-pulse" style="animation-delay: 0.2s"></div>
+                                <div class="w-1 h-10 bg-purple-500 rounded animate-pulse" style="animation-delay: 0.3s"></div>
+                                <div class="w-1 h-8 bg-purple-400 rounded animate-pulse" style="animation-delay: 0.4s"></div>
+                            </div>
+                            <p class="text-gray-600">"I'd be happy to schedule that appointment for you. How does Thursday at 2 PM sound?"</p>
+                        </div>
+                    </div>
+                    <div class="order-1 md:order-2">
+                        <div class="inline-block bg-purple-100 text-purple-600 px-4 py-1 rounded-full text-sm font-medium mb-4">High ROI</div>
+                        <h2 class="text-3xl font-bold text-gray-900 mb-4">IA Voice</h2>
+                        <p class="text-xl text-gray-600 mb-6">Natural voice AI that answers calls, books appointments, and guides customers with human-like conversations. Replace your call center.</p>
+                        
+                        <div class="space-y-4 mb-8">
+                            <div class="flex items-start">
+                                <svg class="w-6 h-6 text-green-500 mr-3 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                                <div>
+                                    <h4 class="font-semibold">Instant Call Answering</h4>
+                                    <p class="text-gray-600">Never miss a call. AI answers in 0.5 seconds, 24/7/365.</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start">
+                                <svg class="w-6 h-6 text-green-500 mr-3 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                                <div>
+                                    <h4 class="font-semibold">Appointment Booking</h4>
+                                    <p class="text-gray-600">Integrates with your calendar. Books, reschedules, sends reminders.</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start">
+                                <svg class="w-6 h-6 text-green-500 mr-3 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                                <div>
+                                    <h4 class="font-semibold">50+ Languages</h4>
+                                    <p class="text-gray-600">Speak to customers in their native language. Global ready.</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-center space-x-4">
+                            <a href="/demo?product=voice" class="bg-purple-600 text-white px-8 py-3 rounded-lg hover:bg-purple-700 transition font-medium">Get Demo</a>
+                            <span class="text-gray-500">Starting at $3,500/mo</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- IA Agent -->
+            <div id="ia-agent" class="bg-white rounded-2xl shadow-lg p-8 mb-12 card-hover transition-all duration-300">
+                <div class="grid md:grid-cols-2 gap-12 items-center">
+                    <div>
+                        <div class="inline-block bg-green-100 text-green-600 px-4 py-1 rounded-full text-sm font-medium mb-4">Enterprise</div>
+                        <h2 class="text-3xl font-bold text-gray-900 mb-4">IA Agent</h2>
+                        <p class="text-xl text-gray-600 mb-6">Autonomous AI agents that handle end-to-end tasks. CRM updates, data syncing, email responses, and complex workflow automation.</p>
+                        
+                        <div class="space-y-4 mb-8">
+                            <div class="flex items-start">
+                                <svg class="w-6 h-6 text-green-500 mr-3 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                                <div>
+                                    <h4 class="font-semibold">CRM Automation</h4>
+                                    <p class="text-gray-600">Auto-update Salesforce, HubSpot, Pipedrive. Zero manual data entry.</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start">
+                                <svg class="w-6 h-6 text-green-500 mr-3 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                                <div>
+                                    <h4 class="font-semibold">Email & Document Processing</h4>
+                                    <p class="text-gray-600">Read, understand, and respond to emails. Process invoices, contracts.</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start">
+                                <svg class="w-6 h-6 text-green-500 mr-3 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                                <div>
+                                    <h4 class="font-semibold">Multi-Step Workflows</h4>
+                                    <p class="text-gray-600">Chain complex tasks together. If this, then that, at scale.</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-center space-x-4">
+                            <a href="/demo?product=agent" class="bg-green-600 text-white px-8 py-3 rounded-lg hover:bg-green-700 transition font-medium">Get Demo</a>
+                            <span class="text-gray-500">Starting at $5,000/mo</span>
+                        </div>
+                    </div>
+                    <div class="bg-gradient-to-br from-green-50 to-emerald-100 rounded-xl p-8">
+                        <div class="bg-white rounded-lg shadow-lg p-4">
+                            <div class="text-sm font-medium text-gray-500 mb-4">Agent Activity Log</div>
+                            <div class="space-y-3">
+                                <div class="flex items-center text-sm">
+                                    <div class="w-2 h-2 bg-green-500 rounded-full mr-3"></div>
+                                    <span class="text-gray-600">Updated 47 CRM records from email data</span>
+                                    <span class="ml-auto text-gray-400">2m ago</span>
+                                </div>
+                                <div class="flex items-center text-sm">
+                                    <div class="w-2 h-2 bg-green-500 rounded-full mr-3"></div>
+                                    <span class="text-gray-600">Processed 12 invoices, flagged 2 for review</span>
+                                    <span class="ml-auto text-gray-400">5m ago</span>
+                                </div>
+                                <div class="flex items-center text-sm">
+                                    <div class="w-2 h-2 bg-green-500 rounded-full mr-3"></div>
+                                    <span class="text-gray-600">Sent follow-up emails to 23 leads</span>
+                                    <span class="ml-auto text-gray-400">12m ago</span>
+                                </div>
+                                <div class="flex items-center text-sm">
+                                    <div class="w-2 h-2 bg-blue-500 rounded-full mr-3"></div>
+                                    <span class="text-gray-600">Synced data between Salesforce ↔ Slack</span>
+                                    <span class="ml-auto text-gray-400">18m ago</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- IA ERP -->
+            <div id="ia-erp" class="bg-white rounded-2xl shadow-lg p-8 mb-12 card-hover transition-all duration-300">
+                <div class="grid md:grid-cols-2 gap-12 items-center">
+                    <div class="order-2 md:order-1 bg-gradient-to-br from-orange-50 to-amber-100 rounded-xl p-8">
+                        <div class="grid grid-cols-2 gap-4">
+                            <div class="bg-white rounded-lg shadow p-4 text-center">
+                                <div class="text-3xl font-bold text-orange-600">$2.4M</div>
+                                <div class="text-sm text-gray-500">Revenue MTD</div>
+                            </div>
+                            <div class="bg-white rounded-lg shadow p-4 text-center">
+                                <div class="text-3xl font-bold text-green-600">+18%</div>
+                                <div class="text-sm text-gray-500">vs Last Month</div>
+                            </div>
+                            <div class="bg-white rounded-lg shadow p-4 text-center">
+                                <div class="text-3xl font-bold text-blue-600">847</div>
+                                <div class="text-sm text-gray-500">Active Orders</div>
+                            </div>
+                            <div class="bg-white rounded-lg shadow p-4 text-center">
+                                <div class="text-3xl font-bold text-purple-600">99.2%</div>
+                                <div class="text-sm text-gray-500">Fulfillment</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="order-1 md:order-2">
+                        <div class="inline-block bg-orange-100 text-orange-600 px-4 py-1 rounded-full text-sm font-medium mb-4">All-in-One</div>
+                        <h2 class="text-3xl font-bold text-gray-900 mb-4">IA ERP</h2>
+                        <p class="text-xl text-gray-600 mb-6">Unified business management platform. CRM, Finance, HR, Inventory, and Operations — all powered by AI insights.</p>
+                        
+                        <div class="space-y-4 mb-8">
+                            <div class="flex items-start">
+                                <svg class="w-6 h-6 text-green-500 mr-3 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                                <div>
+                                    <h4 class="font-semibold">AI-Powered Forecasting</h4>
+                                    <p class="text-gray-600">Predict demand, revenue, and inventory needs with 94% accuracy.</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start">
+                                <svg class="w-6 h-6 text-green-500 mr-3 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                                <div>
+                                    <h4 class="font-semibold">Single Source of Truth</h4>
+                                    <p class="text-gray-600">No more spreadsheet chaos. Everything in one place.</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start">
+                                <svg class="w-6 h-6 text-green-500 mr-3 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                                <div>
+                                    <h4 class="font-semibold">Natural Language Queries</h4>
+                                    <p class="text-gray-600">"Show me Q4 sales by region" — instant answers.</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-center space-x-4">
+                            <a href="/demo?product=erp" class="bg-orange-600 text-white px-8 py-3 rounded-lg hover:bg-orange-700 transition font-medium">Get Demo</a>
+                            <span class="text-gray-500">Starting at $8,000/mo</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- IA Finance -->
+            <div id="ia-finance" class="bg-white rounded-2xl shadow-lg p-8 mb-12 card-hover transition-all duration-300">
+                <div class="grid md:grid-cols-2 gap-12 items-center">
+                    <div>
+                        <div class="inline-block bg-emerald-100 text-emerald-600 px-4 py-1 rounded-full text-sm font-medium mb-4">CFO's Choice</div>
+                        <h2 class="text-3xl font-bold text-gray-900 mb-4">IA Finance</h2>
+                        <p class="text-xl text-gray-600 mb-6">AI-powered invoice automation, fraud detection, payment chasing, and financial insights. Keep your cashflow healthy.</p>
+                        
+                        <div class="space-y-4 mb-8">
+                            <div class="flex items-start">
+                                <svg class="w-6 h-6 text-green-500 mr-3 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                                <div>
+                                    <h4 class="font-semibold">Automated Invoice Processing</h4>
+                                    <p class="text-gray-600">Extract, validate, and process invoices in seconds. 95% accuracy.</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start">
+                                <svg class="w-6 h-6 text-green-500 mr-3 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                                <div>
+                                    <h4 class="font-semibold">Smart Payment Chasing</h4>
+                                    <p class="text-gray-600">AI sends perfectly-timed reminders. Reduce DSO by 40%.</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start">
+                                <svg class="w-6 h-6 text-green-500 mr-3 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                                <div>
+                                    <h4 class="font-semibold">Fraud Detection</h4>
+                                    <p class="text-gray-600">AI spots anomalies humans miss. Protect your business.</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-center space-x-4">
+                            <a href="/demo?product=finance" class="bg-emerald-600 text-white px-8 py-3 rounded-lg hover:bg-emerald-700 transition font-medium">Get Demo</a>
+                            <span class="text-gray-500">Starting at $4,000/mo</span>
+                        </div>
+                    </div>
+                    <div class="bg-gradient-to-br from-emerald-50 to-teal-100 rounded-xl p-8">
+                        <div class="bg-white rounded-lg shadow-lg p-4">
+                            <div class="text-sm font-medium text-gray-500 mb-4">Payment Recovery</div>
+                            <div class="space-y-4">
+                                <div class="flex items-center justify-between p-3 bg-green-50 rounded-lg">
+                                    <div>
+                                        <div class="font-medium">Invoice #4521</div>
+                                        <div class="text-sm text-gray-500">Acme Corp</div>
+                                    </div>
+                                    <div class="text-right">
+                                        <div class="font-bold text-green-600">$24,500</div>
+                                        <div class="text-xs text-green-500">Paid after AI reminder</div>
+                                    </div>
+                                </div>
+                                <div class="flex items-center justify-between p-3 bg-yellow-50 rounded-lg">
+                                    <div>
+                                        <div class="font-medium">Invoice #4518</div>
+                                        <div class="text-sm text-gray-500">TechStart Inc</div>
+                                    </div>
+                                    <div class="text-right">
+                                        <div class="font-bold text-yellow-600">$18,200</div>
+                                        <div class="text-xs text-yellow-500">Reminder sent 2h ago</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- IA Watch -->
+            <div id="ia-watch" class="bg-white rounded-2xl shadow-lg p-8 mb-12 card-hover transition-all duration-300">
+                <div class="grid md:grid-cols-2 gap-12 items-center">
+                    <div class="order-2 md:order-1 bg-gradient-to-br from-red-50 to-rose-100 rounded-xl p-8">
+                        <div class="bg-gray-900 rounded-lg p-4">
+                            <div class="flex items-center justify-between mb-4">
+                                <div class="text-white font-medium">Live Monitoring</div>
+                                <div class="flex items-center">
+                                    <div class="w-2 h-2 bg-red-500 rounded-full animate-pulse mr-2"></div>
+                                    <span class="text-red-400 text-sm">LIVE</span>
+                                </div>
+                            </div>
+                            <div class="grid grid-cols-2 gap-2">
+                                <div class="bg-gray-800 rounded aspect-video flex items-center justify-center text-gray-500">
+                                    <span>Camera 1 - Entrance</span>
+                                </div>
+                                <div class="bg-gray-800 rounded aspect-video flex items-center justify-center text-gray-500">
+                                    <span>Camera 2 - Parking</span>
+                                </div>
+                            </div>
+                            <div class="mt-4 p-2 bg-yellow-900/50 rounded text-yellow-400 text-sm">
+                                ⚠️ Motion detected at Camera 2 - 14:32:01
+                            </div>
+                        </div>
+                    </div>
+                    <div class="order-1 md:order-2">
+                        <div class="inline-block bg-red-100 text-red-600 px-4 py-1 rounded-full text-sm font-medium mb-4">Security</div>
+                        <h2 class="text-3xl font-bold text-gray-900 mb-4">IA Watch</h2>
+                        <p class="text-xl text-gray-600 mb-6">Intelligent surveillance that detects unusual behavior, sends real-time alerts, and keeps your premises secure 24/7.</p>
+                        
+                        <div class="space-y-4 mb-8">
+                            <div class="flex items-start">
+                                <svg class="w-6 h-6 text-green-500 mr-3 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                                <div>
+                                    <h4 class="font-semibold">Behavior Detection</h4>
+                                    <p class="text-gray-600">AI recognizes suspicious activity, not just motion. Fewer false alarms.</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start">
+                                <svg class="w-6 h-6 text-green-500 mr-3 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                                <div>
+                                    <h4 class="font-semibold">Instant Alerts</h4>
+                                    <p class="text-gray-600">SMS, email, or app notifications within seconds of detection.</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start">
+                                <svg class="w-6 h-6 text-green-500 mr-3 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                                <div>
+                                    <h4 class="font-semibold">Works with Existing Cameras</h4>
+                                    <p class="text-gray-600">No hardware replacement. Plug into your current CCTV system.</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-center space-x-4">
+                            <a href="/demo?product=watch" class="bg-red-600 text-white px-8 py-3 rounded-lg hover:bg-red-700 transition font-medium">Get Demo</a>
+                            <span class="text-gray-500">Starting at $3,000/mo</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="gradient-bg text-white py-20">
+        <div class="max-w-4xl mx-auto px-4 text-center">
+            <h2 class="text-3xl md:text-4xl font-bold mb-6">Ready to Transform Your Business?</h2>
+            <p class="text-xl text-indigo-100 mb-8">Join 500+ companies already using IAdopt AI. Book a free demo and see the difference.</p>
+            <div class="flex flex-col sm:flex-row justify-center gap-4">
+                <a href="/demo" class="bg-white text-indigo-600 px-8 py-4 rounded-lg hover:bg-gray-100 transition font-semibold text-lg">Book Free Demo</a>
+                <a href="/pricing" class="border-2 border-white text-white px-8 py-4 rounded-lg hover:bg-white/10 transition font-semibold text-lg">View Pricing</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-gray-400 py-12">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="grid md:grid-cols-4 gap-8">
+                <div>
+                    <div class="text-2xl font-bold text-white mb-4">IAdopt</div>
+                    <p class="text-sm">Next-generation AI automation for modern businesses.</p>
+                </div>
+                <div>
+                    <h4 class="text-white font-semibold mb-4">Products</h4>
+                    <ul class="space-y-2 text-sm">
+                        <li><a href="#ia-chat" class="hover:text-white">IA Chat</a></li>
+                        <li><a href="#ia-voice" class="hover:text-white">IA Voice</a></li>
+                        <li><a href="#ia-agent" class="hover:text-white">IA Agent</a></li>
+                        <li><a href="#ia-erp" class="hover:text-white">IA ERP</a></li>
+                        <li><a href="#ia-finance" class="hover:text-white">IA Finance</a></li>
+                        <li><a href="#ia-watch" class="hover:text-white">IA Watch</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-white font-semibold mb-4">Company</h4>
+                    <ul class="space-y-2 text-sm">
+                        <li><a href="/about" class="hover:text-white">About Us</a></li>
+                        <li><a href="/case-studies" class="hover:text-white">Case Studies</a></li>
+                        <li><a href="/blog" class="hover:text-white">Blog</a></li>
+                        <li><a href="/careers" class="hover:text-white">Careers</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-white font-semibold mb-4">Contact</h4>
+                    <ul class="space-y-2 text-sm">
+                        <li>hello@iadopt.ai</li>
+                        <li>+1 (555) 123-4567</li>
+                        <li><a href="/demo" class="hover:text-white">Book Demo</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="border-t border-gray-800 mt-8 pt-8 text-sm text-center">
+                © 2026 IAdopt AI. All rights reserved. | <a href="/privacy" class="hover:text-white">Privacy</a> | <a href="/terms" class="hover:text-white">Terms</a>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pricing | IAdopt - AI Automation That Pays for Itself</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Inter', sans-serif; }
+        .gradient-bg { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <!-- Navigation -->
+    <nav class="bg-white shadow-sm sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16 items-center">
+                <a href="/" class="text-2xl font-bold text-indigo-600">IAdopt</a>
+                <div class="hidden md:flex space-x-8">
+                    <a href="/" class="text-gray-600 hover:text-indigo-600">Home</a>
+                    <a href="/products" class="text-gray-600 hover:text-indigo-600">Products</a>
+                    <a href="/pricing" class="text-indigo-600 font-medium">Pricing</a>
+                    <a href="/case-studies" class="text-gray-600 hover:text-indigo-600">Case Studies</a>
+                </div>
+                <a href="/demo" class="bg-indigo-600 text-white px-6 py-2 rounded-lg hover:bg-indigo-700 transition">Book Demo</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero -->
+    <section class="gradient-bg text-white py-16">
+        <div class="max-w-7xl mx-auto px-4 text-center">
+            <h1 class="text-4xl md:text-5xl font-bold mb-4">Simple, Transparent Pricing</h1>
+            <p class="text-xl text-indigo-100">No hidden fees. No long-term contracts. Cancel anytime.</p>
+        </div>
+    </section>
+
+    <!-- Pricing Toggle -->
+    <section class="py-8">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="flex justify-center items-center space-x-4">
+                <span class="text-gray-600">Monthly</span>
+                <button id="billing-toggle" class="relative w-14 h-7 bg-indigo-600 rounded-full transition">
+                    <span class="absolute left-1 top-1 w-5 h-5 bg-white rounded-full transition transform" id="toggle-dot"></span>
+                </button>
+                <span class="text-gray-600">Annual <span class="text-green-500 font-medium">(Save 20%)</span></span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Individual Product Pricing -->
+    <section class="py-12">
+        <div class="max-w-7xl mx-auto px-4">
+            <h2 class="text-2xl font-bold text-center mb-8">Individual Products</h2>
+            <div class="grid md:grid-cols-3 lg:grid-cols-6 gap-6">
+                <!-- IA Chat -->
+                <div class="bg-white rounded-xl shadow-lg p-6 text-center hover:shadow-xl transition">
+                    <div class="w-12 h-12 bg-blue-100 rounded-lg mx-auto mb-4 flex items-center justify-center">
+                        <svg class="w-6 h-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"></path></svg>
+                    </div>
+                    <h3 class="font-bold text-lg mb-2">IA Chat</h3>
+                    <div class="text-3xl font-bold text-gray-900 mb-1">$2,500<span class="text-lg text-gray-500">/mo</span></div>
+                    <p class="text-sm text-gray-500 mb-4">Chatbots for web & social</p>
+                    <a href="/demo?product=chat" class="block w-full bg-blue-600 text-white py-2 rounded-lg hover:bg-blue-700 transition">Get Started</a>
+                </div>
+
+                <!-- IA Voice -->
+                <div class="bg-white rounded-xl shadow-lg p-6 text-center hover:shadow-xl transition">
+                    <div class="w-12 h-12 bg-purple-100 rounded-lg mx-auto mb-4 flex items-center justify-center">
+                        <svg class="w-6 h-6 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11a7 7 0 01-7 7m0 0a7 7 0 01-7-7m7 7v4m0 0H8m4 0h4m-4-8a3 3 0 01-3-3V5a3 3 0 116 0v6a3 3 0 01-3 3z"></path></svg>
+                    </div>
+                    <h3 class="font-bold text-lg mb-2">IA Voice</h3>
+                    <div class="text-3xl font-bold text-gray-900 mb-1">$3,500<span class="text-lg text-gray-500">/mo</span></div>
+                    <p class="text-sm text-gray-500 mb-4">Voice AI for calls</p>
+                    <a href="/demo?product=voice" class="block w-full bg-purple-600 text-white py-2 rounded-lg hover:bg-purple-700 transition">Get Started</a>
+                </div>
+
+                <!-- IA Agent -->
+                <div class="bg-white rounded-xl shadow-lg p-6 text-center hover:shadow-xl transition">
+                    <div class="w-12 h-12 bg-green-100 rounded-lg mx-auto mb-4 flex items-center justify-center">
+                        <svg class="w-6 h-6 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
+                    </div>
+                    <h3 class="font-bold text-lg mb-2">IA Agent</h3>
+                    <div class="text-3xl font-bold text-gray-900 mb-1">$5,000<span class="text-lg text-gray-500">/mo</span></div>
+                    <p class="text-sm text-gray-500 mb-4">Autonomous workflows</p>
+                    <a href="/demo?product=agent" class="block w-full bg-green-600 text-white py-2 rounded-lg hover:bg-green-700 transition">Get Started</a>
+                </div>
+
+                <!-- IA Finance -->
+                <div class="bg-white rounded-xl shadow-lg p-6 text-center hover:shadow-xl transition">
+                    <div class="w-12 h-12 bg-emerald-100 rounded-lg mx-auto mb-4 flex items-center justify-center">
+                        <svg class="w-6 h-6 text-emerald-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                    </div>
+                    <h3 class="font-bold text-lg mb-2">IA Finance</h3>
+                    <div class="text-3xl font-bold text-gray-900 mb-1">$4,000<span class="text-lg text-gray-500">/mo</span></div>
+                    <p class="text-sm text-gray-500 mb-4">Invoice & payment AI</p>
+                    <a href="/demo?product=finance" class="block w-full bg-emerald-600 text-white py-2 rounded-lg hover:bg-emerald-700 transition">Get Started</a>
+                </div>
+
+                <!-- IA Watch -->
+                <div class="bg-white rounded-xl shadow-lg p-6 text-center hover:shadow-xl transition">
+                    <div class="w-12 h-12 bg-red-100 rounded-lg mx-auto mb-4 flex items-center justify-center">
+                        <svg class="w-6 h-6 text-red-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path></svg>
+                    </div>
+                    <h3 class="font-bold text-lg mb-2">IA Watch</h3>
+                    <div class="text-3xl font-bold text-gray-900 mb-1">$3,000<span class="text-lg text-gray-500">/mo</span></div>
+                    <p class="text-sm text-gray-500 mb-4">AI surveillance</p>
+                    <a href="/demo?product=watch" class="block w-full bg-red-600 text-white py-2 rounded-lg hover:bg-red-700 transition">Get Started</a>
+                </div>
+
+                <!-- IA ERP -->
+                <div class="bg-white rounded-xl shadow-lg p-6 text-center hover:shadow-xl transition">
+                    <div class="w-12 h-12 bg-orange-100 rounded-lg mx-auto mb-4 flex items-center justify-center">
+                        <svg class="w-6 h-6 text-orange-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"></path></svg>
+                    </div>
+                    <h3 class="font-bold text-lg mb-2">IA ERP</h3>
+                    <div class="text-3xl font-bold text-gray-900 mb-1">$8,000<span class="text-lg text-gray-500">/mo</span></div>
+                    <p class="text-sm text-gray-500 mb-4">Full business suite</p>
+                    <a href="/demo?product=erp" class="block w-full bg-orange-600 text-white py-2 rounded-lg hover:bg-orange-700 transition">Get Started</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Bundle Pricing -->
+    <section class="py-16 bg-gray-100">
+        <div class="max-w-7xl mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center mb-4">Bundle & Save</h2>
+            <p class="text-gray-600 text-center mb-12 max-w-2xl mx-auto">Get more value with our bundled packages. The more you adopt, the more you save.</p>
+            
+            <div class="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+                <!-- Starter Bundle -->
+                <div class="bg-white rounded-2xl shadow-lg p-8 relative">
+                    <h3 class="text-xl font-bold mb-2">Starter</h3>
+                    <p class="text-gray-500 mb-6">Perfect for small teams</p>
+                    <div class="mb-6">
+                        <span class="text-4xl font-bold">$5,000</span>
+                        <span class="text-gray-500">/month</span>
+                    </div>
+                    <div class="text-sm text-green-600 mb-6">Save $500/mo vs individual</div>
+                    <ul class="space-y-3 mb-8">
+                        <li class="flex items-center">
+                            <svg class="w-5 h-5 text-green-500 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                            IA Chat (Full)
+                        </li>
+                        <li class="flex items-center">
+                            <svg class="w-5 h-5 text-green-500 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                            IA Voice (Full)
+                        </li>
+                        <li class="flex items-center">
+                            <svg class="w-5 h-5 text-green-500 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                            5,000 conversations/mo
+                        </li>
+                        <li class="flex items-center">
+                            <svg class="w-5 h-5 text-green-500 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                            Email support
+                        </li>
+                    </ul>
+                    <a href="/demo?bundle=starter" class="block w-full bg-gray-900 text-white py-3 rounded-lg text-center hover:bg-gray-800 transition font-medium">Get Started</a>
+                </div>
+
+                <!-- Growth Bundle -->
+                <div class="bg-indigo-600 rounded-2xl shadow-xl p-8 relative transform scale-105">
+                    <div class="absolute -top-4 left-1/2 transform -translate-x-1/2 bg-yellow-400 text-yellow-900 px-4 py-1 rounded-full text-sm font-bold">MOST POPULAR</div>
+                    <h3 class="text-xl font-bold text-white mb-2">Growth</h3>
+                    <p class="text-indigo-200 mb-6">For scaling businesses</p>
+                    <div class="mb-6">
+                        <span class="text-4xl font-bold text-white">$12,000</span>
+                        <span class="text-indigo-200">/month</span>
+                    </div>
+                    <div class="text-sm text-green-300 mb-6">Save $3,500/mo vs individual</div>
+                    <ul class="space-y-3 mb-8 text-white">
+                        <li class="flex items-center">
+                            <svg class="w-5 h-5 text-green-400 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                            IA Chat (Full)
+                        </li>
+                        <li class="flex items-center">
+                            <svg class="w-5 h-5 text-green-400 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                            IA Voice (Full)
+                        </li>
+                        <li class="flex items-center">
+                            <svg class="w-5 h-5 text-green-400 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                            IA Agent (Full)
+                        </li>
+                        <li class="flex items-center">
+                            <svg class="w-5 h-5 text-green-400 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                            IA Finance (Full)
+                        </li>
+                        <li class="flex items-center">
+                            <svg class="w-5 h-5 text-green-400 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                            Unlimited conversations
+                        </li>
+                        <li class="flex items-center">
+                            <svg class="w-5 h-5 text-green-400 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                            Priority support
+                        </li>
+                    </ul>
+                    <a href="/demo?bundle=growth" class="block w-full bg-white text-indigo-600 py-3 rounded-lg text-center hover:bg-gray-100 transition font-bold">Get Started</a>
+                </div>
+
+                <!-- Enterprise Bundle -->
+                <div class="bg-white rounded-2xl shadow-lg p-8 relative">
+                    <h3 class="text-xl font-bold mb-2">Enterprise</h3>
+                    <p class="text-gray-500 mb-6">Full AI transformation</p>
+                    <div class="mb-6">
+                        <span class="text-4xl font-bold">$25,000</span>
+                        <span class="text-gray-500">/month</span>
+                    </div>
+                    <div class="text-sm text-green-600 mb-6">Save $8,000/mo vs individual</div>
+                    <ul class="space-y-3 mb-8">
+                        <li class="flex items-center">
+                            <svg class="w-5 h-5 text-green-500 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                            ALL 6 Products
+                        </li>
+                        <li class="flex items-center">
+                            <svg class="w-5 h-5 text-green-500 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                            Unlimited everything
+                        </li>
+                        <li class="flex items-center">
+                            <svg class="w-5 h-5 text-green-500 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                            Dedicated success manager
+                        </li>
+                        <li class="flex items-center">
+                            <svg class="w-5 h-5 text-green-500 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                            Custom integrations
+                        </li>
+                        <li class="flex items-center">
+                            <svg class="w-5 h-5 text-green-500 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                            SLA guarantee
+                        </li>
+                    </ul>
+                    <a href="/demo?bundle=enterprise" class="block w-full bg-gray-900 text-white py-3 rounded-lg text-center hover:bg-gray-800 transition font-medium">Contact Sales</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Implementation Pricing -->
+    <section class="py-16">
+        <div class="max-w-7xl mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center mb-4">Implementation Services</h2>
+            <p class="text-gray-600 text-center mb-12 max-w-2xl mx-auto">Optional one-time setup and customization services</p>
+            
+            <div class="grid md:grid-cols-3 gap-8 max-w-4xl mx-auto">
+                <div class="bg-white rounded-xl shadow p-6 text-center">
+                    <div class="text-3xl font-bold text-gray-900 mb-2">$5,000</div>
+                    <h3 class="font-semibold mb-2">Quick Start</h3>
+                    <p class="text-gray-500 text-sm">Basic setup, training, and 2-week support</p>
+                </div>
+                <div class="bg-white rounded-xl shadow p-6 text-center border-2 border-indigo-600">
+                    <div class="text-3xl font-bold text-indigo-600 mb-2">$15,000</div>
+                    <h3 class="font-semibold mb-2">Professional</h3>
+                    <p class="text-gray-500 text-sm">Full setup, custom workflows, 30-day support</p>
+                </div>
+                <div class="bg-white rounded-xl shadow p-6 text-center">
+                    <div class="text-3xl font-bold text-gray-900 mb-2">$50,000+</div>
+                    <h3 class="font-semibold mb-2">Enterprise</h3>
+                    <p class="text-gray-500 text-sm">Full transformation, custom dev, 90-day support</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ROI Calculator -->
+    <section class="py-16 bg-indigo-50">
+        <div class="max-w-4xl mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center mb-4">Calculate Your ROI</h2>
+            <p class="text-gray-600 text-center mb-8">See how much you can save with IAdopt AI</p>
+            
+            <div class="bg-white rounded-2xl shadow-lg p-8">
+                <div class="grid md:grid-cols-2 gap-8">
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-2">Monthly support tickets</label>
+                        <input type="number" id="tickets" value="1000" class="w-full border rounded-lg p-3 mb-4">
+                        
+                        <label class="block text-sm font-medium text-gray-700 mb-2">Cost per ticket (manual handling)</label>
+                        <input type="number" id="cost-per-ticket" value="15" class="w-full border rounded-lg p-3 mb-4">
+                        
+                        <label class="block text-sm font-medium text-gray-700 mb-2">Monthly inbound calls</label>
+                        <input type="number" id="calls" value="500" class="w-full border rounded-lg p-3 mb-4">
+                        
+                        <label class="block text-sm font-medium text-gray-700 mb-2">Cost per call (agent time)</label>
+                        <input type="number" id="cost-per-call" value="25" class="w-full border rounded-lg p-3">
+                    </div>
+                    <div class="bg-gradient-to-br from-indigo-500 to-purple-600 rounded-xl p-6 text-white">
+                        <h3 class="text-lg font-semibold mb-4">Your Estimated Savings</h3>
+                        <div class="space-y-4">
+                            <div>
+                                <div class="text-sm text-indigo-200">Current Monthly Cost</div>
+                                <div class="text-3xl font-bold" id="current-cost">$27,500</div>
+                            </div>
+                            <div>
+                                <div class="text-sm text-indigo-200">With IAdopt (80% automation)</div>
+                                <div class="text-3xl font-bold" id="iadopt-cost">$11,000</div>
+                            </div>
+                            <div class="border-t border-indigo-400 pt-4">
+                                <div class="text-sm text-indigo-200">Monthly Savings</div>
+                                <div class="text-4xl font-bold text-green-300" id="savings">$16,500</div>
+                            </div>
+                            <div>
+                                <div class="text-sm text-indigo-200">Annual Savings</div>
+                                <div class="text-2xl font-bold" id="annual-savings">$198,000</div>
+                            </div>
+                        </div>
+                        <div class="mt-6 text-sm text-indigo-200">
+                            ROI: <span class="font-bold text-white" id="roi">660%</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Guarantee -->
+    <section class="py-16">
+        <div class="max-w-4xl mx-auto px-4 text-center">
+            <div class="w-20 h-20 bg-green-100 rounded-full mx-auto mb-6 flex items-center justify-center">
+                <svg class="w-10 h-10 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path></svg>
+            </div>
+            <h2 class="text-3xl font-bold mb-4">90-Day ROI Guarantee</h2>
+            <p class="text-xl text-gray-600 mb-8">If you don't see at least 2X ROI within 90 days, we'll refund your implementation fee and work for free until you do.</p>
+            <a href="/demo" class="bg-indigo-600 text-white px-8 py-4 rounded-lg hover:bg-indigo-700 transition font-semibold text-lg inline-block">Start Risk-Free</a>
+        </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="py-16 bg-gray-100">
+        <div class="max-w-3xl mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center mb-12">Frequently Asked Questions</h2>
+            <div class="space-y-4">
+                <details class="bg-white rounded-lg shadow p-6">
+                    <summary class="font-semibold cursor-pointer">Can I switch plans later?</summary>
+                    <p class="mt-4 text-gray-600">Yes! You can upgrade or downgrade at any time. Changes take effect on your next billing cycle.</p>
+                </details>
+                <details class="bg-white rounded-lg shadow p-6">
+                    <summary class="font-semibold cursor-pointer">Is there a setup fee?</summary>
+                    <p class="mt-4 text-gray-600">Basic setup is included free. For custom implementations, we offer optional professional services packages.</p>
+                </details>
+                <details class="bg-white rounded-lg shadow p-6">
+                    <summary class="font-semibold cursor-pointer">What's included in support?</summary>
+                    <p class="mt-4 text-gray-600">All plans include email support. Growth and Enterprise plans include priority support with dedicated Slack channels and phone access.</p>
+                </details>
+                <details class="bg-white rounded-lg shadow p-6">
+                    <summary class="font-semibold cursor-pointer">Do you offer discounts for nonprofits or startups?</summary>
+                    <p class="mt-4 text-gray-600">Yes! We offer 25% off for registered nonprofits and 20% off for early-stage startups (under $1M ARR). Contact us for details.</p>
+                </details>
+                <details class="bg-white rounded-lg shadow p-6">
+                    <summary class="font-semibold cursor-pointer">What happens to my data if I cancel?</summary>
+                    <p class="mt-4 text-gray-600">You can export all your data at any time. After cancellation, we retain your data for 30 days, then securely delete it.</p>
+                </details>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="gradient-bg text-white py-16">
+        <div class="max-w-4xl mx-auto px-4 text-center">
+            <h2 class="text-3xl font-bold mb-4">Ready to Get Started?</h2>
+            <p class="text-xl text-indigo-100 mb-8">Book a free demo and see IAdopt in action. No commitment required.</p>
+            <a href="/demo" class="bg-white text-indigo-600 px-8 py-4 rounded-lg hover:bg-gray-100 transition font-bold text-lg inline-block">Book Free Demo →</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-gray-400 py-12">
+        <div class="max-w-7xl mx-auto px-4 text-center">
+            <div class="text-2xl font-bold text-white mb-4">IAdopt</div>
+            <p class="mb-4">© 2026 IAdopt AI. All rights reserved.</p>
+            <div class="space-x-4">
+                <a href="/privacy" class="hover:text-white">Privacy</a>
+                <a href="/terms" class="hover:text-white">Terms</a>
+                <a href="/contact" class="hover:text-white">Contact</a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // ROI Calculator
+        function updateROI() {
+            const tickets = parseInt(document.getElementById('tickets').value) || 0;
+            const costPerTicket = parseInt(document.getElementById('cost-per-ticket').value) || 0;
+            const calls = parseInt(document.getElementById('calls').value) || 0;
+            const costPerCall = parseInt(document.getElementById('cost-per-call').value) || 0;
+            
+            const currentCost = (tickets * costPerTicket) + (calls * costPerCall);
+            const iadoptCost = (currentCost * 0.2) + 5000; // 80% automation + $5k platform
+            const savings = currentCost - iadoptCost;
+            const roi = Math.round((savings / 5000) * 100);
+            
+            document.getElementById('current-cost').textContent = '$' + currentCost.toLocaleString();
+            document.getElementById('iadopt-cost').textContent = '$' + iadoptCost.toLocaleString();
+            document.getElementById('savings').textContent = '$' + savings.toLocaleString();
+            document.getElementById('annual-savings').textContent = '$' + (savings * 12).toLocaleString();
+            document.getElementById('roi').textContent = roi + '%';
+        }
+        
+        document.querySelectorAll('input').forEach(input => {
+            input.addEventListener('input', updateROI);
+        });
+    </script>
+</body>
+</html>

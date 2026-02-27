@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IAdopt - Next Gen AI Automation for Modern Teams</title>
+    <meta name="description" content="Transform your operations with intelligent automation. From chatbots to voice AI, we help you adopt the future seamlessly.">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Inter', sans-serif; }
+        .gradient-bg { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); }
+        .card-hover:hover { transform: translateY(-5px); transition: all 0.3s ease; }
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+        }
+        .float { animation: float 3s ease-in-out infinite; }
+    </style>
+</head>
+<body class="bg-white">
+    <!-- Navigation -->
+    <nav class="bg-white/80 backdrop-blur-md shadow-sm fixed w-full top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16 items-center">
+                <div class="flex items-center">
+                    <span class="text-2xl font-bold text-indigo-600">IAdopt</span>
+                </div>
+                <div class="hidden md:flex space-x-8">
+                    <a href="#products" class="text-gray-600 hover:text-indigo-600 transition">Products</a>
+                    <a href="pricing.html" class="text-gray-600 hover:text-indigo-600 transition">Pricing</a>
+                    <a href="case-studies.html" class="text-gray-600 hover:text-indigo-600 transition">Case Studies</a>
+                    <a href="#how-it-works" class="text-gray-600 hover:text-indigo-600 transition">How It Works</a>
+                </div>
+                <a href="demo.html" class="bg-indigo-600 text-white px-6 py-2 rounded-lg hover:bg-indigo-700 transition font-medium">Book Demo</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="gradient-bg min-h-screen flex items-center pt-16">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
+            <div class="grid lg:grid-cols-2 gap-12 items-center">
+                <div class="text-white">
+                    <div class="inline-block bg-white/20 backdrop-blur px-4 py-2 rounded-full text-sm mb-6">
+                        🚀 Trusted by 500+ businesses worldwide
+                    </div>
+                    <h1 class="text-4xl md:text-6xl font-bold mb-6 leading-tight">
+                        Adopt AI for<br>
+                        <span class="text-yellow-300">Modern Business</span>
+                    </h1>
+                    <p class="text-xl text-indigo-100 mb-8 leading-relaxed">
+                        Transform your operations with intelligent automation. From chatbots to voice AI, we help you adopt the future seamlessly.
+                    </p>
+                    <div class="flex flex-col sm:flex-row gap-4 mb-8">
+                        <a href="demo.html" class="bg-white text-indigo-600 px-8 py-4 rounded-lg hover:bg-gray-100 transition font-semibold text-lg text-center">
+                            Book Free Demo →
+                        </a>
+                        <a href="#products" class="border-2 border-white text-white px-8 py-4 rounded-lg hover:bg-white/10 transition font-semibold text-lg text-center">
+                            Explore Products
+                        </a>
+                    </div>
+                    <div class="flex items-center space-x-6 text-sm text-indigo-100">
+                        <span class="flex items-center"><svg class="w-5 h-5 mr-2 text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>No credit card required</span>
+                        <span class="flex items-center"><svg class="w-5 h-5 mr-2 text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>14-day free trial</span>
+                    </div>
+                </div>
+                <div class="hidden lg:block">
+                    <div class="relative">
+                        <div class="bg-white/10 backdrop-blur-lg rounded-2xl p-8 float">
+                            <div class="grid grid-cols-2 gap-4">
+                                <div class="bg-white rounded-xl p-4 text-center shadow-lg">
+                                    <div class="text-3xl font-bold text-indigo-600">500+</div>
+                                    <div class="text-gray-500 text-sm">Enterprise Clients</div>
+                                </div>
+                                <div class="bg-white rounded-xl p-4 text-center shadow-lg">
+                                    <div class="text-3xl font-bold text-indigo-600">32</div>
+                                    <div class="text-gray-500 text-sm">Countries</div>
+                                </div>
+                                <div class="bg-white rounded-xl p-4 text-center shadow-lg">
+                                    <div class="text-3xl font-bold text-indigo-600">99.9%</div>
+                                    <div class="text-gray-500 text-sm">Uptime</div>
+                                </div>
+                                <div class="bg-white rounded-xl p-4 text-center shadow-lg">
+                                    <div class="text-3xl font-bold text-indigo-600">24/7</div>
+                                    <div class="text-gray-500 text-sm">Support</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Social Proof Bar -->
+    <section class="bg-gray-50 py-8 border-y">
+        <div class="max-w-7xl mx-auto px-4">
+            <p class="text-center text-gray-500 mb-6">Trusted by innovative companies worldwide</p>
+            <div class="flex flex-wrap justify-center items-center gap-12 opacity-60 grayscale">
+                <div class="text-2xl font-bold text-gray-400">TechCorp</div>
+                <div class="text-2xl font-bold text-gray-400">MediSure</div>
+                <div class="text-2xl font-bold text-gray-400">LuxeRealty</div>
+                <div class="text-2xl font-bold text-gray-400">UrbanStyle</div>
+                <div class="text-2xl font-bold text-gray-400">Meridian</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Choose Us -->
+    <section class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">The IAdopt Advantage</h2>
+                <p class="text-xl text-gray-600 max-w-2xl mx-auto">Empower your business with intelligent automation tailored for growing teams.</p>
+            </div>
+            <div class="grid md:grid-cols-4 gap-8">
+                <div class="text-center p-6 rounded-xl hover:shadow-lg transition card-hover">
+                    <div class="w-16 h-16 bg-indigo-100 rounded-2xl mx-auto mb-4 flex items-center justify-center">
+                        <svg class="w-8 h-8 text-indigo-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
+                    </div>
+                    <h3 class="font-bold text-lg mb-2">Lightning Fast</h3>
+                    <p class="text-gray-600">Deploy AI solutions in minutes, not months. No coding required.</p>
+                </div>
+                <div class="text-center p-6 rounded-xl hover:shadow-lg transition card-hover">
+                    <div class="w-16 h-16 bg-green-100 rounded-2xl mx-auto mb-4 flex items-center justify-center">
+                        <svg class="w-8 h-8 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path></svg>
+                    </div>
+                    <h3 class="font-bold text-lg mb-2">Enterprise Secure</h3>
+                    <p class="text-gray-600">Bank-grade encryption with GDPR, HIPAA compliance built-in.</p>
+                </div>
+                <div class="text-center p-6 rounded-xl hover:shadow-lg transition card-hover">
+                    <div class="w-16 h-16 bg-purple-100 rounded-2xl mx-auto mb-4 flex items-center justify-center">
+                        <svg class="w-8 h-8 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"></path></svg>
+                    </div>
+                    <h3 class="font-bold text-lg mb-2">Infinitely Scalable</h3>
+                    <p class="text-gray-600">From startup to enterprise, grow without limits.</p>
+                </div>
+                <div class="text-center p-6 rounded-xl hover:shadow-lg transition card-hover">
+                    <div class="w-16 h-16 bg-orange-100 rounded-2xl mx-auto mb-4 flex items-center justify-center">
+                        <svg class="w-8 h-8 text-orange-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M18.364 5.636l-3.536 3.536m0 5.656l3.536 3.536M9.172 9.172L5.636 5.636m3.536 9.192l-3.536 3.536M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-5 0a4 4 0 11-8 0 4 4 0 018 0z"></path></svg>
+                    </div>
+                    <h3 class="font-bold text-lg mb-2">24/7 Support</h3>
+                    <p class="text-gray-600">Our AI experts are always here to help you succeed.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Products Section -->
+    <section id="products" class="py-20 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Meet Our AI Products</h2>
+                <p class="text-xl text-gray-600 max-w-2xl mx-auto">Each product is designed to solve specific business challenges with intelligent automation.</p>
+            </div>
+            
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- IA Chat -->
+                <div class="bg-white rounded-2xl shadow-lg p-8 card-hover transition-all duration-300 border-2 border-transparent hover:border-blue-500">
+                    <div class="w-14 h-14 bg-blue-100 rounded-xl mb-6 flex items-center justify-center">
+                        <svg class="w-7 h-7 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"></path></svg>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">IA Chat</h3>
+                    <p class="text-gray-600 mb-6">Intelligent chatbots that turn conversations into conversions. Deploy on web, WhatsApp, or social media.</p>
+                    <div class="flex items-center justify-between">
+                        <span class="text-2xl font-bold text-gray-900">$2,500<span class="text-sm text-gray-500">/mo</span></span>
+                        <a href="products.html#ia-chat" class="text-blue-600 font-medium hover:text-blue-700">Learn more →</a>
+                    </div>
+                </div>
+
+                <!-- IA Voice -->
+                <div class="bg-white rounded-2xl shadow-lg p-8 card-hover transition-all duration-300 border-2 border-transparent hover:border-purple-500">
+                    <div class="w-14 h-14 bg-purple-100 rounded-xl mb-6 flex items-center justify-center">
+                        <svg class="w-7 h-7 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11a7 7 0 01-7 7m0 0a7 7 0 01-7-7m7 7v4m0 0H8m4 0h4m-4-8a3 3 0 01-3-3V5a3 3 0 116 0v6a3 3 0 01-3 3z"></path></svg>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">IA Voice</h3>
+                    <p class="text-gray-600 mb-6">Natural voice AI that answers calls, books appointments, and guides customers with human-like conversations.</p>
+                    <div class="flex items-center justify-between">
+                        <span class="text-2xl font-bold text-gray-900">$3,500<span class="text-sm text-gray-500">/mo</span></span>
+                        <a href="products.html#ia-voice" class="text-purple-600 font-medium hover:text-purple-700">Learn more →</a>
+                    </div>
+                </div>
+
+                <!-- IA Agent -->
+                <div class="bg-white rounded-2xl shadow-lg p-8 card-hover transition-all duration-300 border-2 border-transparent hover:border-green-500">
+                    <div class="w-14 h-14 bg-green-100 rounded-xl mb-6 flex items-center justify-center">
+                        <svg class="w-7 h-7 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">IA Agent</h3>
+                    <p class="text-gray-600 mb-6">Autonomous AI agents that handle end-to-end tasks like CRM updates, data syncing, and workflow automation.</p>
+                    <div class="flex items-center justify-between">
+                        <span class="text-2xl font-bold text-gray-900">$5,000<span class="text-sm text-gray-500">/mo</span></span>
+                        <a href="products.html#ia-agent" class="text-green-600 font-medium hover:text-green-700">Learn more →</a>
+                    </div>
+                </div>
+
+                <!-- IA ERP -->
+                <div class="bg-white rounded-2xl shadow-lg p-8 card-hover transition-all duration-300 border-2 border-transparent hover:border-orange-500">
+                    <div class="w-14 h-14 bg-orange-100 rounded-xl mb-6 flex items-center justify-center">
+                        <svg class="w-7 h-7 text-orange-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"></path></svg>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">IA ERP</h3>
+                    <p class="text-gray-600 mb-6">Unified business management platform bringing CRM, Finance, HR, and Operations together with AI insights.</p>
+                    <div class="flex items-center justify-between">
+                        <span class="text-2xl font-bold text-gray-900">$8,000<span class="text-sm text-gray-500">/mo</span></span>
+                        <a href="products.html#ia-erp" class="text-orange-600 font-medium hover:text-orange-700">Learn more →</a>
+                    </div>
+                </div>
+
+                <!-- IA Finance -->
+                <div class="bg-white rounded-2xl shadow-lg p-8 card-hover transition-all duration-300 border-2 border-transparent hover:border-emerald-500">
+                    <div class="w-14 h-14 bg-emerald-100 rounded-xl mb-6 flex items-center justify-center">
+                        <svg class="w-7 h-7 text-emerald-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">IA Finance</h3>
+                    <p class="text-gray-600 mb-6">AI-powered invoice automation, fraud detection, and payment chasing to keep your cashflow healthy.</p>
+                    <div class="flex items-center justify-between">
+                        <span class="text-2xl font-bold text-gray-900">$4,000<span class="text-sm text-gray-500">/mo</span></span>
+                        <a href="products.html#ia-finance" class="text-emerald-600 font-medium hover:text-emerald-700">Learn more →</a>
+                    </div>
+                </div>
+
+                <!-- IA Watch -->
+                <div class="bg-white rounded-2xl shadow-lg p-8 card-hover transition-all duration-300 border-2 border-transparent hover:border-red-500">
+                    <div class="w-14 h-14 bg-red-100 rounded-xl mb-6 flex items-center justify-center">
+                        <svg class="w-7 h-7 text-red-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path></svg>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">IA Watch</h3>
+                    <p class="text-gray-600 mb-6">Intelligent surveillance that detects unusual behavior, sends real-time alerts, and keeps premises secure 24/7.</p>
+                    <div class="flex items-center justify-between">
+                        <span class="text-2xl font-bold text-gray-900">$3,000<span class="text-sm text-gray-500">/mo</span></span>
+                        <a href="products.html#ia-watch" class="text-red-600 font-medium hover:text-red-700">Learn more →</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="text-center mt-12">
+                <a href="products.html" class="bg-indigo-600 text-white px-8 py-4 rounded-lg hover:bg-indigo-700 transition font-semibold text-lg inline-block">View All Products →</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works -->
+    <section id="how-it-works" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Simple 3-Step Process</h2>
+                <p class="text-xl text-gray-600">From setup to success in minutes, not months.</p>
+            </div>
+            
+            <div class="grid md:grid-cols-3 gap-8 max-w-4xl mx-auto">
+                <div class="text-center">
+                    <div class="w-16 h-16 bg-indigo-600 text-white rounded-full mx-auto mb-6 flex items-center justify-center text-2xl font-bold">1</div>
+                    <h3 class="text-xl font-bold mb-3">Choose Your Solution</h3>
+                    <p class="text-gray-600">Select from our range of AI products tailored to your specific business needs and goals.</p>
+                </div>
+                <div class="text-center">
+                    <div class="w-16 h-16 bg-indigo-600 text-white rounded-full mx-auto mb-6 flex items-center justify-center text-2xl font-bold">2</div>
+                    <h3 class="text-xl font-bold mb-3">Deploy in Minutes</h3>
+                    <p class="text-gray-600">No-code setup with our guided interface. Connect your platforms and go live instantly.</p>
+                </div>
+                <div class="text-center">
+                    <div class="w-16 h-16 bg-indigo-600 text-white rounded-full mx-auto mb-6 flex items-center justify-center text-2xl font-bold">3</div>
+                    <h3 class="text-xl font-bold mb-3">Scale Automatically</h3>
+                    <p class="text-gray-600">Let AI handle the work 24/7 while you focus on growing your business exponentially.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonial -->
+    <section class="py-20 bg-gray-50">
+        <div class="max-w-4xl mx-auto px-4 text-center">
+            <div class="bg-white rounded-2xl shadow-xl p-12">
+                <img src="https://randomuser.me/api/portraits/women/45.jpg" class="w-20 h-20 rounded-full mx-auto mb-6" alt="Dr. Sarah Chen">
+                <blockquote class="text-2xl text-gray-700 mb-6 italic">
+                    "IA Voice transformed our patient experience. We went from missing nearly half our calls to answering 100% instantly. Our staff can finally focus on patient care instead of phone tag."
+                </blockquote>
+                <div class="font-semibold text-gray-900">Dr. Sarah Chen</div>
+                <div class="text-gray-500">COO, MediSure Health Systems</div>
+                <div class="mt-6 flex justify-center items-center space-x-8 text-sm">
+                    <div><span class="text-2xl font-bold text-indigo-600">73%</span><br><span class="text-gray-500">Fewer missed calls</span></div>
+                    <div><span class="text-2xl font-bold text-indigo-600">$840K</span><br><span class="text-gray-500">Annual savings</span></div>
+                    <div><span class="text-2xl font-bold text-indigo-600">4.8/5</span><br><span class="text-gray-500">Patient satisfaction</span></div>
+                </div>
+            </div>
+            <a href="case-studies.html" class="inline-block mt-8 text-indigo-600 font-medium hover:text-indigo-700">Read more success stories →</a>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="gradient-bg py-20">
+        <div class="max-w-4xl mx-auto px-4 text-center text-white">
+            <h2 class="text-3xl md:text-4xl font-bold mb-6">Ready to Adopt AI?</h2>
+            <p class="text-xl text-indigo-100 mb-8">Join 500+ businesses already transforming their operations with IAdopt AI. Start your journey today.</p>
+            <div class="flex flex-col sm:flex-row justify-center gap-4">
+                <a href="demo.html" class="bg-white text-indigo-600 px-8 py-4 rounded-lg hover:bg-gray-100 transition font-semibold text-lg">Book Free Demo</a>
+                <a href="pricing.html" class="border-2 border-white text-white px-8 py-4 rounded-lg hover:bg-white/10 transition font-semibold text-lg">View Pricing</a>
+            </div>
+            <p class="mt-8 text-indigo-200 text-sm">
+                <strong>90-Day ROI Guarantee:</strong> 2X your investment or get your implementation fee back.
+            </p>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-gray-400 py-16">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="grid md:grid-cols-4 gap-8 mb-12">
+                <div>
+                    <div class="text-2xl font-bold text-white mb-4">IAdopt</div>
+                    <p class="text-sm mb-4">Next-generation AI automation for modern businesses.</p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="hover:text-white transition">
+                            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M24 4.557c-.883.392-1.832.656-2.828.775 1.017-.609 1.798-1.574 2.165-2.724-.951.564-2.005.974-3.127 1.195-.897-.957-2.178-1.555-3.594-1.555-3.179 0-5.515 2.966-4.797 6.045-4.091-.205-7.719-2.165-10.148-5.144-1.29 2.213-.669 5.108 1.523 6.574-.806-.026-1.566-.247-2.229-.616-.054 2.281 1.581 4.415 3.949 4.89-.693.188-1.452.232-2.224.084.626 1.956 2.444 3.379 4.6 3.419-2.07 1.623-4.678 2.348-7.29 2.04 2.179 1.397 4.768 2.212 7.548 2.212 9.142 0 14.307-7.721 13.995-14.646.962-.695 1.797-1.562 2.457-2.549z"></path></svg>
+                        </a>
+                        <a href="#" class="hover:text-white transition">
+                            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"></path></svg>
+                        </a>
+                    </div>
+                </div>
+                <div>
+                    <h4 class="text-white font-semibold mb-4">Products</h4>
+                    <ul class="space-y-2 text-sm">
+                        <li><a href="products.html#ia-chat" class="hover:text-white transition">IA Chat</a></li>
+                        <li><a href="products.html#ia-voice" class="hover:text-white transition">IA Voice</a></li>
+                        <li><a href="products.html#ia-agent" class="hover:text-white transition">IA Agent</a></li>
+                        <li><a href="products.html#ia-erp" class="hover:text-white transition">IA ERP</a></li>
+                        <li><a href="products.html#ia-finance" class="hover:text-white transition">IA Finance</a></li>
+                        <li><a href="products.html#ia-watch" class="hover:text-white transition">IA Watch</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-white font-semibold mb-4">Company</h4>
+                    <ul class="space-y-2 text-sm">
+                        <li><a href="#" class="hover:text-white transition">About Us</a></li>
+                        <li><a href="case-studies.html" class="hover:text-white transition">Case Studies</a></li>
+                        <li><a href="#" class="hover:text-white transition">Blog</a></li>
+                        <li><a href="#" class="hover:text-white transition">Careers</a></li>
+                        <li><a href="#" class="hover:text-white transition">Contact</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-white font-semibold mb-4">Contact</h4>
+                    <ul class="space-y-2 text-sm">
+                        <li>hello@iadopt.ai</li>
+                        <li>+1 (555) 123-4567</li>
+                        <li class="pt-4">
+                            <a href="demo.html" class="bg-indigo-600 text-white px-4 py-2 rounded-lg hover:bg-indigo-700 transition inline-block">Book Demo</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="border-t border-gray-800 pt-8 flex flex-col md:flex-row justify-between items-center text-sm">
+                <p>© 2026 IAdopt AI. All rights reserved.</p>
+                <div class="flex space-x-6 mt-4 md:mt-0">
+                    <a href="#" class="hover:text-white transition">Privacy Policy</a>
+                    <a href="#" class="hover:text-white transition">Terms of Service</a>
+                    <a href="#" class="hover:text-white transition">Cookie Policy</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
